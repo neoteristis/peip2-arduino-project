@@ -3,4 +3,4 @@ project(peip2_arduino_project C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(peip2_arduino_project main.c)
+add_executable(peip2_arduino_project src/main.c)
