@@ -1,3 +1,13 @@
+ ## Choix des matériaux
+
+* Je pense que l'on prendra l'option pièce 3D pour avoir une flexibilité dans le design de pièces légères déformables.
+
+* La taille n'excedera pas les 40x25cm de dimension. Cela dependra de la taille de l'imprimante 3D.
+
+
+## Choix des modules électronique
+
+
 ## Brainstorming robot
 
 - [ ] Fonctionnalités
