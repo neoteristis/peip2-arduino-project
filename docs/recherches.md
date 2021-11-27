@@ -1,3 +1,6 @@
+Par exemple, dans notre cas, nous avons déterminé que les actionneurs avaient besoin d’un couple minimum de 20 Nm pour effectuer une démarche rapide et agile. 
+ 
+ 
  ## Choix des matériaux
 
 * Je pense que l'on prendra l'option pièce 3D pour avoir une flexibilité dans le design de pièces légères déformables.
