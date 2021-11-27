@@ -5,6 +5,44 @@
 > required at a robot's joints in order to produce a given motion trajectory consisting of a set of joint positions,
 > velocities and accelerations.
 
+> **Forward or inverse dynamics ?**
+> 
+> **This is an extract from the file inverse_vs_forward_dynamics**
+> 
+> The results of this work indicate that direct transcription
+> implementations relying on forward dynamics to define the
+> defect constraints can be reformulated with inverse dynamics
+> to see an increase in performance, for both feasibility or minimization problems, and without sacrificing the feasibility
+> of the solutions to the optimization problem. An additional
+> reason to prefer inverse dynamics is robustness to coarser
+> discretizations, both in terms of computation efficiency and
+> faithfulness of solutions with respect to finer discretizations.
+> When minimizing a cost function, the locally-optimal solutions computed with either formulation are essentially the
+> same. However, when an objective function is not considered,
+> the formulations may diverge to different solutions. Experimentally, we have observed that the solutions computed with
+> inverse dynamics are easier to perform in real hardware. The
+> reasons behind this divergence are not yet clear to us, and
+> this is something we plan to investigate in future work.
+> Erez and Todorov [13] observed a striking feature in their
+> results: an emergent coordination between legs and opposite
+> arms during a running gait. In this work, for the humanoid
+> jumping task, we also observed such emerging behavior:
+> the resulting motions swing the arms upwards to build-up
+> energy before the take-off instant. Both in [13] and our work,
+> these features originated without any explicit modeling—
+> reaffirming the power of dynamic trajectory optimization.
+> In recent work [28], we took into account uncertainty and
+> robustness to disturbances using direct transcription. Considering uncertainty usually incurs additional computational
+> cost due to more complex problem formulations. With the
+> findings from this paper, we plan to redefine the dynamics
+> defect constraints in that work with inverse dynamics, improving the performance of our robustness framework and
+> making it more competitive.
+
+### Conclusion
+We should consider inverse dynamics as it is said to be more efficient and easier to implement in robotic projects.
+
+# IDEAS AND SOURCES
+
 **Coding train videos**
 
 [Coding Challenge #64.1: Forward Kinematics](https://thecodingtrain.com/CodingChallenges/064.1-forward-kinematics.html)
