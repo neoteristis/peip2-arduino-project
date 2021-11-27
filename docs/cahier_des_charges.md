@@ -19,4 +19,23 @@ Nous nous sommes vite orientés vers un robot arduino qui se déplace, notamment
 * Habiliter de grimper sur une surface surélevée
 * Rotation sur lui même
 
-####&nbsp;&nbsp;&nbsp;Etape
+####&nbsp;&nbsp;&nbsp;Etape de la réalisation du projet
+
+-  [ ] Modélisation du robot (dessin ou 3D)
+
+- [ ] Choix du Moteur(s) et des modules Arduino
+
+- [ ] Construction d'une patte et essai de son bon fonctionnement
+
+- [ ] Assemblage du corps tronc et des 4 pattes
+
+- [ ] Gestion de l'équilibre de son buste
+
+- [ ] Coupler la manette avec notre robot chien
+
+- [ ] Automatisation des mouvements du robot par de multiples commandes de la manette 
+
+- [ ] Autonomie dans la gestion de changement de terrain (grimper sur une plateforme surélevée)
+
+- [ ] Essai et correction des bugs
+
