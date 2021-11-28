@@ -10,9 +10,9 @@ Nous nous sommes vite orientés vers un robot arduino qui se déplace, notamment
 
 ####&nbsp;&nbsp;&nbsp;Objectif du Projet
 
-&nbsp;&nbsp;&nbsp;Nous souhaitons créer un robot chien, une structure plastique montée sur 4 pattes articulées. Il sera télécommandé par une manette xbox en bluetooth.
+&nbsp;&nbsp;&nbsp;Nous souhaitons créer un robot chien, son nom est PolyDog, une structure plastique montée sur 4 pattes articulées. Il sera télécommandé par une manette xbox en bluetooth.
 
-###&nbsp;&nbsp;&nbsp;Fonctionnalité de RH_dog
+###&nbsp;&nbsp;&nbsp;Fonctionnalité de PolyDog
 
 * Marcher dans les 4 directions nesw
 * Combinaison de commande sur la manette entraîne un skill unique
