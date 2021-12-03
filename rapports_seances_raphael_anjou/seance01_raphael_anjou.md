@@ -1,4 +1,4 @@
-# Séance 0 : 23/11/2021 --> 01/12/2021
+# Séance 1 : 23/11/2021 --> 02/12/2021
 
 &nbsp;&nbsp;&nbsp;&nbsp;Le travail compris dans la séance 0 correspond au travail préliminaire effectué avec la première
 séance en classe avec les enseignants.
