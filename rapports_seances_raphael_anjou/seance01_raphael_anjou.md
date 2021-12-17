@@ -3,6 +3,12 @@
 &nbsp;&nbsp;&nbsp;&nbsp;Le travail compris dans la séance 0 correspond au travail préliminaire effectué avec la première
 séance en classe avec les enseignants.
 
+### Information supplémentaire
+
+&nbsp;&nbsp;&nbsp;&nbsp;Pour cette première partie du projet, nous n'avions pas encore réparti les tâches précisément et
+avons tous les deux travaillés sur quasi-tous les sujets ensemble. Toutefois, Hugo s'est principalement concentré sur la
+partie modélisation tandis que de mon côté, j'ai fait de nombreuses recherches sur la partie programmation.
+
 ### Étape 1 : Choix du projet
 
 &nbsp;&nbsp;&nbsp;&nbsp;Hugo et moi-même souhaitions réaliser un robot capable de se déplacer et pouvant être téléguidé.
@@ -61,6 +67,8 @@ qui permet de garder les moteurs au niveau du corps du robot. Contrairement à d
 un moteur au niveau du genou, mais cela nous paraissait trop complexe.
 
 &nbsp;&nbsp;&nbsp;&nbsp;Les recherches sur les algorithmes ont aussi commencés. Ainsi, nous allons probablement travailler
-sur un programme capable de faire du "inverse dynamics" car celui-ci est plus simple et efficace que le "forward dynamics".
+sur un programme capable de faire du "inverse kinematic" car celui-ci est plus simple et efficace que le "forward kinematic".
 Nous avons aussi trouvé des exemples de simulations de robot permettant d'entraîner virtuellement notre robot à se déplacer
-sur différents terrains.
+sur différents terrains. Enfin, j'ai fait des recherches sur la façon dont on pouvait adapter les signaux PWM envoyés aux
+moteurs pour que leurs mouvements soient plus naturels et plus fluides.
+
