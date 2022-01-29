@@ -1,6 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "programmer": "arduino:avrisp",
-    "port": "/dev/cu.usbmodem1402",
-    "sketch": "src/robot_servo_test/robot_servo_test.ino"
-}

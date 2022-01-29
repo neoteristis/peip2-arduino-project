@@ -5,7 +5,7 @@
  * then off for one second, repeatedly.
  */
 
-/* #include "Arduino.h"
+#include "Arduino.h"
 #include "Servo.h"
 
 int servo_pin = 19;
@@ -23,4 +23,4 @@ void loop()
   delay(1000);
   servo.write(180);
   delay(1000);
-} */
+}
