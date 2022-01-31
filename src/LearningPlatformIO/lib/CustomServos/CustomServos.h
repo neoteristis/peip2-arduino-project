@@ -12,7 +12,8 @@ public:
     void min_rotation();
     void amplitude_test();
     void calibration();
-    void write_angle(int angle);
+    void write(int angle);
+    void attach();
 
 private:
     int _pin;

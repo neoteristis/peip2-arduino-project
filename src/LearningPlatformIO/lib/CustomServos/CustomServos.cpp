@@ -13,9 +13,6 @@ CustomServos::CustomServos(int pin, int angle_min, int angle_max)
     _pin = pin;
     _angle_min = angle_min;
     _angle_max = angle_max;
-
-    Servo _servo;
-    _servo.attach(_pin);
 }
 
 void CustomServos::max_rotation()
@@ -28,7 +25,12 @@ void CustomServos::min_rotation()
     _servo.write(_angle_min);
 }
 
-void CustomServos::write_angle(int angle)
+void CustomServos::write(int angle)
 {
     _servo.write(angle);
+}
+
+void CustomServos::attach()
+{
+    _servo.attach(_pin);
 }
