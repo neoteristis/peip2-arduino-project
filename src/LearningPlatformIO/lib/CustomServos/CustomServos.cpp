@@ -8,10 +8,9 @@
 #include <Servo.h>
 #include <CustomServos.h>
 
-CustomServos::CustomServos(int pin, char name, int angle_min, int angle_max)
+CustomServos::CustomServos(int pin, int angle_min, int angle_max)
 {
     _pin = pin;
-    _name = name;
     _angle_min = angle_min;
     _angle_max = angle_max;
 
@@ -27,4 +26,9 @@ void CustomServos::max_rotation()
 void CustomServos::min_rotation()
 {
     _servo.write(_angle_min);
+}
+
+void CustomServos::write_angle(int angle)
+{
+    _servo.write(angle);
 }

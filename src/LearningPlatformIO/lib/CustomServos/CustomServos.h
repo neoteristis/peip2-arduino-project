@@ -7,15 +7,15 @@
 class CustomServos
 {
 public:
-    CustomServos(int pin, char name, int angle_min, int angle_max);
+    CustomServos(int pin, int angle_min, int angle_max);
     void max_rotation();
     void min_rotation();
     void amplitude_test();
     void calibration();
+    void write_angle(int angle);
 
 private:
     int _pin;
-    char _name;
     int _angle_min;
     int _angle_max;
     Servo _servo;
