@@ -76,14 +76,14 @@ void loop()
 
     servo03.write(angle_genou);                       //genou A
     servo02.write(angle_hanche);                      //hanche A
-    servo01.write(41);                                //epaule A -> value to be at 90° from ground
-    servo06.write(76);                                //epaule B -> value to be at 90° from ground
+    servo01.write(41);                                //epaule A -> value to be at 90 from ground
+    servo06.write(76);                                //epaule B -> value to be at 90 from ground
     servo05.write(map(angle_hanche, 0, 180, 180, 0)); //hanche B
     servo04.write(map(angle_genou, 0, 180, 180, 0));  //genou B
     servo09.write(map(angle_genou, 0, 180, 180, 0));  //genou C
     servo08.write(map(angle_hanche, 0, 180, 180, 0)); //hanche C
-    servo07.write(158);                               //epaule C -> value to be at 90° from ground
-    servo12.write(92);                                //epaule D -> value to be at 90° from ground
+    servo07.write(158);                               //epaule C -> value to be at 90 from ground
+    servo12.write(92);                                //epaule D -> value to be at 90 from ground
     servo11.write(angle_hanche);                      //hanche D
     servo10.write(angle_genou);                       //genou D
 }
