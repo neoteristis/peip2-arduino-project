@@ -48,14 +48,19 @@ Which means that all others should be expressed in function of A_motor_angle.
 3. A_knee_angle -> baseline
 4. B_knee_angle ->
 5. B_hip_angle ->
-6. B_shoulder_angle ->
-7. C_shoulder_angle ->
-8. C_hip_angle ->
-9. C_shoulder_angle ->
-10. D_knee_angle ->
-11. D_hip_angle ->
-12. D_shoulder_angle ->
+6. B_shoulder_angle -> ?
+7. C_shoulder_angle -> ?
+8. C_hip_angle -> map(0, 180, 180, 0)
+9. C_shoulder_angle -> map(0, 180, 180, 0)
+10. D_knee_angle -> baseline
+11. D_hip_angle -> baseline
+12. D_shoulder_angle -> ?
 
 ## TODO
 
 Change A leg motor placement
+
+## TO NOTE BETTER
+
+Pour le genou : 90 degrés
+Pour la hanche : 180 degrés
