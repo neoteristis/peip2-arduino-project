@@ -42,9 +42,9 @@ void setup()
     // servo04.attach();
     // servo05.attach();
     // servo06.attach();
-    servo07.attach();
-    servo08.attach();
-    servo09.attach();
+    // servo07.attach();
+    // servo08.attach();
+    // servo09.attach();
     servo10.attach();
     servo11.attach();
     servo12.attach();
@@ -65,7 +65,7 @@ void loop()
 
     angle_genou = (90 - Cint);
     angle_hanche = (90 - Bint) * 40 / 25;
-    // End of calcultaed for C leg
+    // End of calculated for C leg
 
     Serial.print("hanche: ");
     Serial.print(angle_hanche);
@@ -74,16 +74,16 @@ void loop()
     Serial.print("     height: ");
     Serial.println(b);
 
-    servo01.write(angle_genou);                 //genou A
-    servo02.write(angle_hanche);                //hanche A
-    servo03.write(42);                          //epaule A
-    servo04.write(80);                          //epaule B
-    servo05.write(angle_hanche);                //hanche B
-    servo06.write(angle_genou);                 //genou B
-    servo07.write(90 - Cint);                   //genou C
-    servo08.write((90 - Bint) * 40 / 25);       //hanche C
-    servo09.write(159);                         //epaule C
-    servo10.write(98);                          //epaule D
-    servo11.write((180 - 90 - Bint) * 40 / 25); //hanche D
-    servo12.write(180 - 90 - Cint);             //genou D
+    // servo03.write(angle_genou);                       //genou A
+    // servo02.write(angle_hanche);                      //hanche A
+    // servo01.write(41);                                //epaule A -> value to be at 90 from ground
+    // servo06.write(76);                                //epaule B -> value to be at 90 from ground
+    // servo05.write(map(angle_hanche, 0, 180, 180, 0)); //hanche B
+    // servo04.write(angle_genou);  //genou B
+    // servo09.write(angle_genou);  //genou C
+    // servo08.write(map(angle_hanche, 0, 180, 180, 0)); //hanche C
+    // servo07.write(158);                               //epaule C -> value to be at 90 from ground
+    servo12.write(92);                                //epaule D -> value to be at 90 from ground
+    servo11.write(angle_hanche);                      //hanche D
+    servo10.write(angle_genou);                       //genou D
 }
