@@ -1,25 +1,29 @@
 #include <Arduino.h>
 #include <Servo.h>
 #include <CustomServos.h>
-#include <PolyDog.h>
+
 
 int val_hanche;
 int val_genou;
 
-CustomServos hancheA(3, "hancheA");
-CustomServos genouA(2, "genouA");
-CustomServos hancheB(12, "hancheB");
-CustomServos genouB(13, "genouB");
-CustomServos hancheC(9, "hancheC");
-CustomServos genouC(8, "genouC");
-CustomServos hancheD(5, "hancheD");
-CustomServos genouD(4, "genouD");
-CustomServos epauleA(6, "epauleA");
-CustomServos epauleB(11, "epauleB");
-CustomServos epauleC(10, "epauleC");
-CustomServos epauleD(7, "epauleD");
+Servo servo;
 
-PolyDog polydog(hancheA);
+ CustomServos hancheA(35, "hancheA");
+ CustomServos genouA(34, "genouA");
+ 
+ CustomServos hancheB(31, "hancheB");
+ CustomServos genouB(30, "genouB");
+ 
+ CustomServos hancheC(3, "hancheC");
+ CustomServos genouC(4, "genouC");
+ 
+ CustomServos hancheD(7, "hancheD");
+ CustomServos genouD(6, "genouD");
+ 
+ CustomServos epauleA(36, "epauleA");
+ CustomServos epauleB(32, "epauleB");
+ CustomServos epauleC(2, "epauleC");
+ CustomServos epauleD(8, "epauleD");
 
 void forward_leg(CustomServos servo_hanche, CustomServos servo_genou, int offset_hanche, int offset_genou)
 {
@@ -66,18 +70,18 @@ void hold_shoulders(CustomServos shoulderA, CustomServos shoulderB, CustomServos
 
 void setup()
 {
-    epauleA.attach();
-    hancheA.attach();
-    genouA.attach();
-    epauleB.attach();
-    hancheB.attach();
-    genouB.attach();
-    epauleC.attach();
-    hancheC.attach();
-    genouC.attach();
-    epauleD.attach();
-    hancheD.attach();
-    genouD.attach();
+     epauleA.attach();
+     hancheA.attach();
+     genouA.attach();
+     epauleB.attach();
+     hancheB.attach();
+     genouB.attach();
+     epauleC.attach();
+     hancheC.attach();
+     genouC.attach();
+     epauleD.attach();
+     hancheD.attach();
+     genouD.attach();
 
     Serial.begin(9600);
 }
@@ -85,17 +89,16 @@ void setup()
 void loop()
 {
 
-    // hold_shoulders(epauleA, epauleB, epauleC, epauleD);
+    hold_shoulders(epauleA, epauleB, epauleC, epauleD);
 
-    // Serial.println("jambe A");
-    // forward_leg(hancheA, genouA, 180, 180); // LEG A
-    // Serial.println("jambe B");
-    // forward_leg(hancheB, genouB, 0, 0); // LEG B
-    // Serial.println("jambe D");
-    // forward_leg(hancheD, genouD, 180, 180); // LEG D
-    // Serial.println("jambe C");
-    // forward_leg(hancheC, genouC, 0, 0); // LEG C
-    // Serial.println("FINI");
+    Serial.println("jambe A");
+    forward_leg(hancheA, genouA, 180, 180); // LEG A
+    Serial.println("jambe B");
+    forward_leg(hancheB, genouB, 0, 0); // LEG B
+    Serial.println("jambe D");
+    forward_leg(hancheD, genouD, 180, 180); // LEG D
+    Serial.println("jambe C");
+    forward_leg(hancheC, genouC, 0, 0); // LEG C
+    Serial.println("FINI");
 
-    polydog.function_test();
 }
