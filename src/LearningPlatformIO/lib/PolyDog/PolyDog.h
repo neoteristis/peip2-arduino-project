@@ -7,11 +7,12 @@
 class PolyDog
 {
 public:
-    PolyDog(CustomServos servo_to_test);
-    void function_test();
+    PolyDog(int i);
+    void forward_leg(CustomServos servo_hanche, CustomServos servo_genou, int offset_hanche, int offset_genou);
+    void hold_shoulders(CustomServos shoulderA, CustomServos shoulderB, CustomServos shoulderC, CustomServos shoulderD);
 
 private:
-    CustomServos _servo_to_test;
+    int _i;
 };
 
 #endif
