@@ -19,7 +19,7 @@ CustomServos epauleB(11, "epauleB");
 CustomServos epauleC(10, "epauleC");
 CustomServos epauleD(7, "epauleD");
 
-PolyDog polydog(hancheA);
+PolyDog polydog;
 
 void forward_leg(CustomServos servo_hanche, CustomServos servo_genou, int offset_hanche, int offset_genou)
 {
@@ -96,6 +96,7 @@ void loop()
     // Serial.println("jambe C");
     // forward_leg(hancheC, genouC, 0, 0); // LEG C
     // Serial.println("FINI");
-
-    polydog.function_test();
+    hancheA.write(90);
+    // polydog.hold_shoulders();
+    Serial.println("yooo");
 }
