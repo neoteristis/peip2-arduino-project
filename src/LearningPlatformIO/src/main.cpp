@@ -1,89 +1,101 @@
-#include <CustomServos.h>
 #include <Arduino.h>
 #include <Servo.h>
+#include <CustomServos.h>
+#include <PolyDog.h>
 
-CustomServos servo01(2, 0, 180);
-CustomServos servo02(3, 0, 180);
-CustomServos servo03(4, 0, 180);
-CustomServos servo04(5, 0, 180);
-CustomServos servo05(6, 0, 180);
-CustomServos servo06(7, 0, 180);
-CustomServos servo07(8, 0, 180);
-CustomServos servo08(9, 0, 180);
-CustomServos servo09(10, 0, 180);
-CustomServos servo10(11, 0, 180);
-CustomServos servo11(12, 0, 180);
-CustomServos servo12(13, 0, 180);
+int val_hanche;
+int val_genou;
 
-float A;
-float B;
-float C;
-float a = 9.7;
-float b;
-float c = 10;
+CustomServos hancheA(3, "hancheA");
+CustomServos genouA(2, "genouA");
+CustomServos hancheB(12, "hancheB");
+CustomServos genouB(13, "genouB");
+CustomServos hancheC(9, "hancheC");
+CustomServos genouC(8, "genouC");
+CustomServos hancheD(5, "hancheD");
+CustomServos genouD(4, "genouD");
+CustomServos epauleA(6, "epauleA");
+CustomServos epauleB(11, "epauleB");
+CustomServos epauleC(10, "epauleC");
+CustomServos epauleD(7, "epauleD");
 
-int angle_genou;
-int angle_hanche;
+PolyDog polydog(hancheA);
 
-int Bint;
-int Cint;
-
-float fmap(float x, float a, float b, float c, float d)
+void forward_leg(CustomServos servo_hanche, CustomServos servo_genou, int offset_hanche, int offset_genou)
 {
-    float f = x / (b - a) * (d - c) + c;
-    return f;
+    int delay_time = 300;
+
+    // Start position
+    delay(delay_time);
+    servo_hanche.write(abs(offset_hanche - 42));
+    servo_genou.write(abs(offset_genou - 85));
+
+    // Lift leg
+    delay(delay_time);
+    servo_genou.write(abs(offset_genou - 30));
+
+    // Go forward
+    delay(delay_time);
+    servo_hanche.write(abs(offset_hanche - 85));
+
+    // Start the knee to go down
+    delay(delay_time);
+    servo_genou.write(abs(offset_genou - 45));
+
+    // Start position again
+    delay(delay_time);
+    servo_genou.write(abs(offset_genou - 77));
+
+    // Go forward
+    delay(delay_time);
+    servo_hanche.write(abs(offset_hanche - 38));
+
+    // Start position
+    delay(delay_time);
+    servo_hanche.write(abs(offset_hanche - 42));
+    servo_genou.write(abs(offset_genou - 85));
+}
+
+void hold_shoulders(CustomServos shoulderA, CustomServos shoulderB, CustomServos shoulderC, CustomServos shoulderD)
+{
+    shoulderA.write(48);
+    shoulderB.write(79);
+    shoulderC.write(158);
+    shoulderD.write(89);
 }
 
 void setup()
 {
-    // servo01.attach();
-    // servo02.attach();
-    // servo03.attach();
-    // servo04.attach();
-    // servo05.attach();
-    // servo06.attach();
-    // servo07.attach();
-    // servo08.attach();
-    // servo09.attach();
-    servo10.attach();
-    servo11.attach();
-    servo12.attach();
+    epauleA.attach();
+    hancheA.attach();
+    genouA.attach();
+    epauleB.attach();
+    hancheB.attach();
+    genouB.attach();
+    epauleC.attach();
+    hancheC.attach();
+    genouC.attach();
+    epauleD.attach();
+    hancheD.attach();
+    genouD.attach();
 
     Serial.begin(9600);
 }
 
 void loop()
 {
-    // Calculated for C leg
-    b = fmap((float)analogRead(1), 0.0, 1023.0, 10.5, 19.3);
 
-    B = acos(b / (2 * a)) * 180 / PI;
-    C = 180 - (180 - 2 * B);
+    // hold_shoulders(epauleA, epauleB, epauleC, epauleD);
 
-    Cint = (int)C;
-    Bint = (int)B;
+    // Serial.println("jambe A");
+    // forward_leg(hancheA, genouA, 180, 180); // LEG A
+    // Serial.println("jambe B");
+    // forward_leg(hancheB, genouB, 0, 0); // LEG B
+    // Serial.println("jambe D");
+    // forward_leg(hancheD, genouD, 180, 180); // LEG D
+    // Serial.println("jambe C");
+    // forward_leg(hancheC, genouC, 0, 0); // LEG C
+    // Serial.println("FINI");
 
-    angle_genou = (90 - Cint);
-    angle_hanche = (90 - Bint) * 40 / 25;
-    // End of calculated for C leg
-
-    Serial.print("hanche: ");
-    Serial.print(angle_hanche);
-    Serial.print("     genou: ");
-    Serial.print(angle_genou);
-    Serial.print("     height: ");
-    Serial.println(b);
-
-    // servo03.write(angle_genou);                       //genou A
-    // servo02.write(angle_hanche);                      //hanche A
-    // servo01.write(41);                                //epaule A -> value to be at 90 from ground
-    // servo06.write(76);                                //epaule B -> value to be at 90 from ground
-    // servo05.write(map(angle_hanche, 0, 180, 180, 0)); //hanche B
-    // servo04.write(angle_genou);  //genou B
-    // servo09.write(angle_genou);  //genou C
-    // servo08.write(map(angle_hanche, 0, 180, 180, 0)); //hanche C
-    // servo07.write(158);                               //epaule C -> value to be at 90 from ground
-    servo12.write(92);                                //epaule D -> value to be at 90 from ground
-    servo11.write(angle_hanche);                      //hanche D
-    servo10.write(angle_genou);                       //genou D
+    polydog.function_test();
 }

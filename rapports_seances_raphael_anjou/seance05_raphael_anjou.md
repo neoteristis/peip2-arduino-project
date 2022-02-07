@@ -52,16 +52,16 @@ compte les libertés des modules des pattes
 &nbsp;&nbsp;&nbsp;&nbsp;J'ai appris à utiliser PlatformIO afin de pouvoir uploader dans l'Arduino les programmes depuis Visual Studio Code. Nous utiliserons donc maintenant la structure des fichiers de PlateformIO. \
 &nbsp;&nbsp;&nbsp;&nbsp;En revanche, l'arborescence du dossier `src` de notre projet n'est pas du tout optimale. Ranger tout cela est un des objectifs de la semaine.
 
-[Emplacement du dossier PlatformIO](src/LearningPlatformIO)
+[Emplacement du dossier PlatformIO](/src/LearningPlatformIO)
 
 ### Les classes
 
 &nbsp;&nbsp;&nbsp;&nbsp;J'ai commencé à créer des classes en C++ pour notre projet afin de pouvoir controler les servos plus spécifiquement. Plus de classes verront le jour par la suite en fonction de nos besoins.
 
-[Emplacement de la classe](src/LearningPlatformIO/lib/CustomServos)
+[Emplacement de la classe](/src/LearningPlatformIO/lib/CustomServos)
 
 ### Programme pour tester la rotation des servos
 
 &nbsp;&nbsp;&nbsp;&nbsp;Ce programme permet de controller facilement deux servos simplement grâce à deux potentiomètres branchés sur le bloc de contrôle du robot.
 
-[Emplacement du programme](src/LearningPlatformIO/src/test-servo.cpp)
+[Emplacement du programme](/src/LearningPlatformIO/others/test-servo.cpp)
