@@ -1,6 +1,6 @@
 /*
   CustomServos.cpp - Library to use servos with custom functions
-  Created by Raphaël Anjou, Januray 29, 2022 
+  Created by Raphaël Anjou, Januray 29, 2022
   Released into the public domain.
 */
 
@@ -34,6 +34,13 @@ void CustomServos::write(int angle)
 void CustomServos::attach()
 {
     _servo.attach(_pin);
+    for (int i = 0; i < 3; i++)
+    {
+        digitalWrite(LED_BUILTIN, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        delay(100);
+    }
 }
 
 void CustomServos::control_with_potentio(int pin_potentio1)

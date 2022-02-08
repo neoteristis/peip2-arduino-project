@@ -7,12 +7,13 @@
 class PolyDog
 {
 public:
-    PolyDog();
+    PolyDog(); // Default construteur
     void start();
-    void forward_leg(CustomServos servo_hanche, CustomServos servo_genou, int offset_hanche, int offset_genou);
+    void forward_leg(int leg_number, int step, int offset_hanche, int offset_genou);
     void hold_shoulders();
     void attach_all_motors();
     void move_forward();
+    void control_from_dog();
 
 private:
     CustomServos _servoEpauleA;
@@ -26,6 +27,7 @@ private:
     CustomServos _servoEpauleC;
     CustomServos _servoHancheC;
     CustomServos _servoGenouC;
+
     CustomServos _servoEpauleD;
     CustomServos _servoHancheD;
     CustomServos _servoGenouD;
