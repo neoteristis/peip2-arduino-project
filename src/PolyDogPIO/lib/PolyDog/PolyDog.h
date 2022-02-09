@@ -13,7 +13,9 @@ public:
     void hold_shoulders();
     void attach_all_motors();
     void move_forward();
-    void control_from_dog();
+    void select_leg(int leg_number);
+    void control_leg_with_potentio(int leg_number, int pin_potentio01, int pin_potentio02);
+    void attach_one_leg(int leg_number);
 
 private:
     CustomServos _servoEpauleA;

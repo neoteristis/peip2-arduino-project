@@ -47,9 +47,14 @@ void CustomServos::control_two_with_potentio(CustomServos servo2, int pin_potent
     Serial.print("Angle of '");
     Serial.print(_name);
     Serial.print("' : ");
-    Serial.print(val_servo1);
+    Serial.print(abs(val_servo1));
     Serial.print(" | Angle of '");
     Serial.print(*name2);
     Serial.print("' : ");
-    Serial.println(val_servo2);
+    Serial.println(abs(val_servo2));
+}
+
+int CustomServos::read()
+{
+    return _servo.read();
 }

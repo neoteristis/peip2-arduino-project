@@ -13,6 +13,7 @@ public:
     void control_with_potentio(int pin_potentio1);
     void control_two_with_potentio(CustomServos servo2, int pin_potentio1,
                                    int pin_potentio2, char const *name02 = "servo02");
+    int read();
 
 private:
     int _pin;
