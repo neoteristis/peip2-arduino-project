@@ -8,11 +8,11 @@ Pas une mince affaire !
 
 ## Premier assemblage de la patte version1
 
-Les moteurs rentrent pile poil a l'intérieur du boitier de la patte. C'était nickel.
+Les moteurs rentrent pile poil à l'intérieur du boitier de la patte. C'était nickel.
 
-Nous avons assemblé le tout au fablab avec les vis et écrous adaptés. Nous avons omis de faire un trou pour le la vis du milieu pour l'embout qui se fixe sur l'axe de rotation du moteur. Un coup de perceuse et ni vu ni connu.
+Nous avons assemblé le tout au fablab avec les vis et écrous adaptés. Nous avons omis de faire un trou pour la vis du milieu pour l'embout qui se fixe sur l'axe de rotation du moteur. Un coup de perceuse et ni vu ni connu.
 
-On avait hate de commencer a pouvoir bouger la patte avec un petit code de fortune et voir comment tout cela se comporte : 
+On avait hate de commencer à pouvoir bouger la patte avec un petit code de fortune et voir comment tout cela se comporte :
 
 ![](premierpas.gif)
 
@@ -53,4 +53,4 @@ J'ai pu recuperer egalement 12 moteurs MG9996 flambant neuf :
 ![](moteurs12.jpeg)
 
 
-Nous lancerons l'impression des autres pattes très prochainement, peut etre demain.
+Nous lancerons l'impression des autres pattes très prochainement, peut être demain.
