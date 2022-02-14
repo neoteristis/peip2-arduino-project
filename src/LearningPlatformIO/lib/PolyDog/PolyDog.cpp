@@ -1,6 +1,6 @@
 /*
   CustomServos.cpp - Library to use servos with custom functions
-  Created by Raphaël Anjou, Januray 29, 2022 
+  Created by Raphaël Anjou, Januray 29, 2022
   Released into the public domain.
 */
 
@@ -8,50 +8,163 @@
 #include <CustomServos.h>
 #include <PolyDog.h>
 
-PolyDog::PolyDog(int i)
+PolyDog::PolyDog() : _servoEpauleA(36, "epauleA"),
+                     _servoHancheA(35, "hancheA"),
+                     _servoGenouA(34, "genouA"),
+                     _servoEpauleB(32, "epauleB"),
+                     _servoHancheB(31, "hancheB"),
+                     _servoGenouB(30, "genouB"),
+                     _servoEpauleC(2, "epauleC"),
+                     _servoHancheC(3, "hancheC"),
+                     _servoGenouC(4, "genouC"),
+                     _servoEpauleD(8, "epauleD"),
+                     _servoHancheD(7, "hancheD"),
+                     _servoGenouD(6, "genouD")
+
 {
-    _i = i;
+    // HOLDER
 }
 
-void PolyDog::forward_leg(CustomServos servo_hanche, CustomServos servo_genou, int offset_hanche, int offset_genou)
+void PolyDog::forward_leg(int leg_number, int step, int offset_hanche, int offset_genou)
+{
+
+    CustomServos servo_hanche;
+    CustomServos servo_genou;
+
+    // Selection of the leg concerned
+    switch (leg_number)
+    {
+    case 1: // LEG A
+        servo_hanche = _servoHancheA;
+        servo_genou = _servoGenouA;
+        break;
+    case 2: // LEG B
+        servo_hanche = _servoHancheB;
+        servo_genou = _servoGenouB;
+        break;
+    case 3: // LEG C
+        servo_hanche = _servoHancheC;
+        servo_genou = _servoGenouC;
+        break;
+    case 4: // LEG D
+        servo_hanche = _servoHancheD;
+        servo_genou = _servoGenouD;
+        break;
+    default:
+        servo_hanche = _servoHancheA;
+        servo_genou = _servoGenouA;
+    }
+
+    // Selection of the stage of the movement to do
+    // All values in the following commands were arbitraty chosen
+    switch (step)
+    {
+    case 1:
+        // Start position
+        servo_hanche.write(abs(offset_hanche - 42));
+        servo_genou.write(abs(offset_genou - 85));
+        break;
+
+    case 2:
+        servo_genou.write(abs(offset_genou - 30));
+        break;
+
+    case 3:
+        servo_hanche.write(abs(offset_hanche - 85));
+        break;
+
+    case 4:
+        servo_hanche.write(abs(offset_hanche - 85));
+        break;
+
+    case 5:
+        servo_genou.write(abs(offset_genou - 77));
+        break;
+
+    case 6:
+        servo_hanche.write(abs(offset_hanche - 38));
+        break;
+
+    case 7:
+        // Equal to start position
+        servo_hanche.write(abs(offset_hanche - 42));
+        servo_genou.write(abs(offset_genou - 85));
+        break;
+
+    default:
+        // Equal to start position
+        servo_hanche.write(abs(offset_hanche - 42));
+        servo_genou.write(abs(offset_genou - 85));
+        break;
+    }
+}
+
+void PolyDog::hold_shoulders()
+{
+    _servoEpauleA.write(48);
+    _servoEpauleB.write(79);
+    _servoEpauleC.write(158);
+    _servoEpauleD.write(89);
+}
+
+void PolyDog::attach_all_motors()
+{
+    _servoEpauleA.attach();
+    _servoHancheA.attach();
+    _servoGenouA.attach();
+
+    _servoEpauleB.attach();
+    _servoHancheB.attach();
+    _servoGenouB.attach();
+
+    _servoEpauleC.attach();
+    _servoHancheC.attach();
+    _servoGenouC.attach();
+
+    _servoEpauleD.attach();
+    _servoHancheD.attach();
+    _servoGenouD.attach();
+}
+
+void PolyDog::start()
 {
     int delay_time = 300;
-
     // Start position
-    delay(delay_time);
-    servo_hanche.write(abs(offset_hanche - 42));
-    servo_genou.write(abs(offset_genou - 85));
+    _servoHancheA.write(abs(180 - 42));
+    _servoGenouA.write(abs(180 - 85));
 
-    // Lift leg
-    delay(delay_time);
-    servo_genou.write(abs(offset_genou - 30));
+    _servoHancheB.write(abs(42));
+    _servoGenouB.write(abs(85));
 
-    // Go forward
-    delay(delay_time);
-    servo_hanche.write(abs(offset_hanche - 85));
+    _servoHancheC.write(abs(42));
+    _servoGenouC.write(abs(85));
 
-    // Start the knee to go down
-    delay(delay_time);
-    servo_genou.write(abs(offset_genou - 45));
+    _servoHancheD.write(abs(180 - 42));
+    _servoGenouD.write(abs(180 - 85));
 
-    // Start position again
-    delay(delay_time);
-    servo_genou.write(abs(offset_genou - 77));
-
-    // Go forward
-    delay(delay_time);
-    servo_hanche.write(abs(offset_hanche - 38));
-
-    // Start position
-    delay(delay_time);
-    servo_hanche.write(abs(offset_hanche - 42));
-    servo_genou.write(abs(offset_genou - 85));
+    this->hold_shoulders();
 }
 
-void PolyDog::hold_shoulders(CustomServos shoulderA, CustomServos shoulderB, CustomServos shoulderC, CustomServos shoulderD)
+void PolyDog::move_forward()
 {
-    shoulderA.write(48);
-    shoulderB.write(79);
-    shoulderC.write(158);
-    shoulderD.write(89);
+    int number_of_stages = 7;
+    int decalage_A = 0;
+    int decalage_B = 4;
+    int decalage_C = 0;
+    int decalage_D = 4;
+
+    for (int stage = 1; stage < number_of_stages + 1; stage++)
+    {
+        Serial.println("jambe A");
+        this->forward_leg(1, (stage + decalage_A) % number_of_stages, 180, 180);
+        Serial.println("jambe B");
+        this->forward_leg(2, (stage + decalage_B) % number_of_stages, 0, 0);
+        Serial.println("jambe C");
+        this->forward_leg(3, (stage + decalage_C) % number_of_stages, 0, 0);
+        Serial.println("jambe D");
+        this->forward_leg(4, (stage + decalage_D) % number_of_stages, 180, 180);
+        Serial.println("-------------");
+
+        delay(100);
+    }
 }

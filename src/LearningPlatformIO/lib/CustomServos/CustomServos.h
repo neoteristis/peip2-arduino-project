@@ -7,10 +7,7 @@
 class CustomServos
 {
 public:
-    CustomServos(int pin = 1, char const *name = "servo", int angle_min = 0, int angle_max = 180);
-    void max_rotation();
-    void min_rotation();
-    void amplitude_test();
+    CustomServos(int pin = 1, char const *name = "servo");
     void write(int angle);
     void attach();
     void control_with_potentio(int pin_potentio1);
@@ -19,9 +16,7 @@ public:
 
 private:
     int _pin;
-    String _name;
-    int _angle_min;
-    int _angle_max;
+    char _name;
     Servo _servo;
 };
 

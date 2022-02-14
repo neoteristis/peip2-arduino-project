@@ -2,9 +2,11 @@
 
 J'ai continué pendant les vacances l'assemblage des pattes. J'ai incorporé le troisième moteur au reste du module de la patte. Je me suis rendu compte que les 4 pattes ne seront pas les mêmes. J'ai dû appliquer un miroir à certaines pièces et assembler les moteurs de manière différente pour que l'ordre des 3 moteurs soit les mêmes.
 
+Petit aperçu de l'assemblage des pattes ensemble pour obtenir des idées de corps :
+
 ![](pattes-assemblee.PNG)
 
-Je les ajouter dans un assembleur le robot complet, mon principale soucis maintenant etait de prevoir assez de place pour la carte Arduino et les batteries. J'ai testé certaines distances, j'ai pris 10 cm de largeur pour commencer.
+Je les ai ajouté dans un assembleur le robot complet, mon principale soucis maintenant etait de prevoir assez de place pour la carte Arduino et les batteries. J'ai testé certaines distances, j'ai pris 10 cm de largeur pour commencer :
 
 ![](robot-complet-corps.PNG)
 

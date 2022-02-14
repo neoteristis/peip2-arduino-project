@@ -1,6 +1,6 @@
 /*
   CustomServos.cpp - Library to use servos with custom functions
-  Created by Raphaël Anjou, Januray 29, 2022 
+  Created by Raphaël Anjou, Januray 29, 2022
   Released into the public domain.
 */
 
@@ -8,22 +8,10 @@
 #include <Servo.h>
 #include <CustomServos.h>
 
-CustomServos::CustomServos(int pin, char const *name, int angle_min, int angle_max)
+CustomServos::CustomServos(int pin, char const *name)
 {
     _pin = pin;
-    _angle_min = angle_min;
-    _angle_max = angle_max;
     _name = *name;
-}
-
-void CustomServos::max_rotation()
-{
-    _servo.write(_angle_max);
-}
-
-void CustomServos::min_rotation()
-{
-    _servo.write(_angle_min);
 }
 
 void CustomServos::write(int angle)
