@@ -1,36 +1,24 @@
+
+/*
 #include <Arduino.h>
 #include <PolyDog.h>
-
 #include <CustomServos.h>
-CustomServos servo_hanche(30, "G");
-CustomServos servo_genou(31, "H");
 
-int mode = 1;
-int demo = 1;
-int leg_chosen = 1;
+// Leg that will run with the potentio in mode 0-0
+
+int mode = 0;       // 0 : testing | 1 : full robot
+int demo = 0;       // 0 : no leg demo | 1 : one leg demo
+int leg_chosen = 1; // leg that will run for the demo
 
 PolyDog dog = PolyDog();
-
-/* void setup()
-{
-    dog.attach_all_motors();
-}
-
-void loop()
-{
-    dog.start();
-} */
 
 void setup()
 {
     if (mode == 0)
     {
-        servo_hanche.attach();
-        servo_genou.attach();
-        if (demo == 1)
-        {
-            dog.attach_one_leg(leg_chosen);
-        }
+        dog.attach_one_leg(leg_chosen);
+        pinMode(26, INPUT);
+        pinMode(27, INPUT);
     }
     else
     {
@@ -45,14 +33,14 @@ void loop()
 {
     if (mode == 0)
     {
-        servo_hanche.control_two_with_potentio(servo_genou, 2, 3);
+        dog.control_leg_with_potentio(leg_chosen, 26, 27);
 
         if (demo == 1)
         {
             int number_of_stages = 7;
             for (int stage = 1; stage < number_of_stages + 1; stage++)
             {
-                dog.forward_leg(leg_chosen, stage % number_of_stages, 180, 180); // 180 for A and D
+                dog.forward_leg(leg_chosen, stage % number_of_stages); // 180 for A and D
                 delay(100);
             }
         }
@@ -60,6 +48,8 @@ void loop()
     else
     {
         // dog.control_leg_with_potentio(1, 2, 3);
-        dog.move_forward();
+        // dog.move_forward();
+        // dog.start();
+        // dog.forward_leg(1, 16, 180, 180);
     }
-}
+}*/

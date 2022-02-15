@@ -12,16 +12,29 @@ CustomServos::CustomServos(int pin, char const *name)
 {
     _pin = pin;
     _name = *name;
+    _last_angle_written = 0;
 }
 
 void CustomServos::write(int angle)
 {
-    _servo.write(angle);
+    this->_servo.write(angle);
+    this->_last_angle_written = angle;
+}
+
+void CustomServos::writeWithLoop(int angle)
+{
+    int start_angle = _last_angle_written;
+    int delta_angle = abs(angle - start_angle);
+    for (int i = 1; i <= delta_angle; i++)
+    {
+        this->write(start_angle + i);
+        delay(10);
+    }
 }
 
 void CustomServos::attach()
 {
-    _servo.attach(_pin);
+    this->_servo.attach(this->_pin);
 }
 
 void CustomServos::control_with_potentio(int pin_potentio1)
@@ -31,7 +44,7 @@ void CustomServos::control_with_potentio(int pin_potentio1)
     _servo.write(val_servo1);
 
     Serial.print("Angle of '");
-    Serial.print(_name);
+    Serial.print(this->_name);
     Serial.print("' : ");
     Serial.println(val_servo1);
 }
@@ -45,7 +58,7 @@ void CustomServos::control_two_with_potentio(CustomServos servo2, int pin_potent
     servo2.write(val_servo2);
 
     Serial.print("Angle of '");
-    Serial.print(_name);
+    Serial.print(this->_name);
     Serial.print("' : ");
     Serial.print(abs(val_servo1));
     Serial.print(" | Angle of '");
@@ -56,5 +69,5 @@ void CustomServos::control_two_with_potentio(CustomServos servo2, int pin_potent
 
 int CustomServos::read()
 {
-    return _servo.read();
+    return this->_last_angle_written;
 }
