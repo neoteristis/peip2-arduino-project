@@ -12,5 +12,6 @@ void setup()
 
 void loop()
 {
-    dog.move_forward();
+    //dog.move_forward();
+    
 }

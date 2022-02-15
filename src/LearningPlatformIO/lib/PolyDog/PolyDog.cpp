@@ -168,3 +168,12 @@ void PolyDog::move_forward()
         delay(100);
     }
 }
+
+void PolyDog::walk_sideways_leg(int leg_number, int step, int offset_hanche, int offset_genou, int offset_epaule, )
+{
+
+    CustomServos servo_hanche;
+    CustomServos servo_genou;
+    CustomServos servo_epaule;
+
+}
