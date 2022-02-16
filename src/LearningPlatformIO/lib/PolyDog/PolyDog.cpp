@@ -8,18 +8,18 @@
 #include <CustomServos.h>
 #include <PolyDog.h>
 
-PolyDog::PolyDog() : _servoEpauleA(36, "epauleA"),
-                     _servoHancheA(35, "hancheA"),
-                     _servoGenouA(34, "genouA"),
-                     _servoEpauleB(32, "epauleB"),
-                     _servoHancheB(31, "hancheB"),
-                     _servoGenouB(30, "genouB"),
-                     _servoEpauleC(2, "epauleC"),
-                     _servoHancheC(3, "hancheC"),
-                     _servoGenouC(4, "genouC"),
-                     _servoEpauleD(8, "epauleD"),
-                     _servoHancheD(7, "hancheD"),
-                     _servoGenouD(6, "genouD")
+PolyDog::PolyDog() : _servoEpauleA(36),
+                     _servoHancheA(35),
+                     _servoGenouA(34),
+                     _servoEpauleB(32),
+                     _servoHancheB(31),
+                     _servoGenouB(30),
+                     _servoEpauleC(2),
+                     _servoHancheC(3),
+                     _servoGenouC(4),
+                     _servoEpauleD(8),
+                     _servoHancheD(7),
+                     _servoGenouD(6),
 
 {
     // HOLDER

@@ -7,16 +7,15 @@
 class CustomServos
 {
 public:
-    CustomServos(int pin = 1, char const *name = "servo");
+    CustomServos(int pin = 1);
     void write(int angle);
     void attach();
-    void control_with_potentio(int pin_potentio1);
+    void control_with_potentio(int pin_potentio);
     void control_two_with_potentio(CustomServos servo2, int pin_potentio1,
-                                   int pin_potentio2, char const *name02 = "servo02");
+                                   int pin_potentio2);
 
 private:
     int _pin;
-    char _name;
     Servo _servo;
 };
 
