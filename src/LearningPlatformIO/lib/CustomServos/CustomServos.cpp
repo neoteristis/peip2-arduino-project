@@ -5,7 +5,6 @@
 */
 
 #include <Arduino.h>
-#include <Servo.h>
 #include <CustomServos.h>
 
 CustomServos::CustomServos(int pin, char const *name)
@@ -16,7 +15,7 @@ CustomServos::CustomServos(int pin, char const *name)
 
 void CustomServos::write(int angle)
 {
-    this->move(fmap(angle, 0, 180, 500, 2500), 0);
+    this->move(map(angle, 0, 180, 500, 2500), 0);
 }
 
 void CustomServos::attach()
