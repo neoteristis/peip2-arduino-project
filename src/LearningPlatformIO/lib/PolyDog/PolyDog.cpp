@@ -21,7 +21,6 @@ PolyDog::PolyDog() :
                      _servoEpauleD(6, "epauleD"),
                      _servoHancheD(5, "hancheD"),
                      _servoGenouD(4, "genouD")
-
 {
     // HOLDER
 }

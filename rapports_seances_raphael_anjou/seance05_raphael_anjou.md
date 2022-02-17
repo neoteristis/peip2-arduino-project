@@ -64,4 +64,6 @@ compte les libertés des modules des pattes
 
 &nbsp;&nbsp;&nbsp;&nbsp;Ce programme permet de controller facilement deux servos simplement grâce à deux potentiomètres branchés sur le bloc de contrôle du robot.
 
-[Emplacement du programme](/src/LearningPlatformIO/others/test-servo.cpp)
+[Emplacement du programme](/src/LearningPlatformIO/others/test-servo.cpp) #Deprecated
+
+Link no longer available due to code modification.

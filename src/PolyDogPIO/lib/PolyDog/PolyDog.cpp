@@ -25,41 +25,26 @@ PolyDog::PolyDog() : _servoEpauleA(36, "epauleA"),
     // HOLDER
 }
 
-void PolyDog::forward_leg(int leg_number, int step, int offset_hanche, int offset_genou)
+void PolyDog::forward_leg(int leg_number, int current_step)
 {
 
     CustomServos servo_hanche;
     CustomServos servo_genou;
 
+    int offset_genou;
+    int offset_hanche;
+
     // Selection of the leg concerned
-    switch (leg_number)
-    {
-    case 1: // LEG A
-        servo_hanche = _servoHancheA;
-        servo_genou = _servoGenouA;
-        break;
-    case 2: // LEG B
-        servo_hanche = _servoHancheB;
-        servo_genou = _servoGenouB;
-        break;
-    case 3: // LEG C
-        servo_hanche = _servoHancheC;
-        servo_genou = _servoGenouC;
-        break;
-    case 4: // LEG D
-        servo_hanche = _servoHancheD;
-        servo_genou = _servoGenouD;
-        break;
-    default:
-        servo_hanche = _servoHancheA;
-        servo_genou = _servoGenouA;
-    }
+    CustomServos *array_servo_chosen = select_leg(leg_number);
+
+    servo_hanche = array_servo_chosen[0];
+    servo_genou = array_servo_chosen[1];
 
     // Selection of the stage of the movement to do
     // All values in the following commands were arbitraty chosen
 
     // ------- Very small steps but working ------- //
-    switch (step)
+    /* switch (step)
     {
     case 1:
         servo_hanche.write(abs(offset_hanche - 21));
@@ -93,9 +78,9 @@ void PolyDog::forward_leg(int leg_number, int step, int offset_hanche, int offse
         servo_hanche.write(abs(offset_hanche - 21));
         servo_genou.write(abs(offset_genou - 83));
         break;
-    }
+    } */
 
-    switch (step)
+    switch (current_step)
     {
     case 1:
         servo_hanche.write(abs(offset_hanche - 20));
@@ -200,25 +185,20 @@ void PolyDog::start()
 
 void PolyDog::move_forward()
 {
-    int number_of_stages = 15;
+    int number_of_stages = 16;
     int decalage_A = 0;
-    int decalage_B = 5;
-    int decalage_C = 0;
-    int decalage_D = 5;
+    int decalage_B = 8;
+    int decalage_C = 4;
+    int decalage_D = 12;
 
     for (int stage = 1; stage < number_of_stages + 1; stage++)
     {
-        Serial.println("jambe A");
-        this->forward_leg(1, (stage + decalage_A) % number_of_stages, 180, 180); // 180, 180 NORMALEMENT
-        Serial.println("jambe B");
-        this->forward_leg(2, (stage + decalage_B) % number_of_stages, 0, 0); // 0, 0 NORMALEMENT
-        Serial.println("jambe C");
-        this->forward_leg(3, (stage + decalage_C) % number_of_stages, 0, 0); // 0, 0 NORMALEMENT
-        Serial.println("jambe D");
-        this->forward_leg(4, (stage + decalage_D) % number_of_stages, 180, 180); // 180, 180 NORMALEMENT
-        Serial.println("-------------");
+        this->forward_leg(1, (stage + decalage_A) % number_of_stages);
+        this->forward_leg(2, (stage + decalage_B) % number_of_stages);
+        this->forward_leg(3, (stage + decalage_C) % number_of_stages);
+        this->forward_leg(4, (stage + decalage_D) % number_of_stages);
 
-        delay(100);
+        delay(200);
     }
 }
 
@@ -254,9 +234,9 @@ void PolyDog::control_leg_with_potentio(int leg_number, int pin_potentio01, int 
     servo_hanche.control_two_with_potentio(servo_genou, pin_potentio01, pin_potentio02);
 }
 
-void PolyDog::select_leg(int leg_number)
+CustomServos *PolyDog::select_leg(int leg_number)
 {
-    CustomServos servos_array[3];
+    CustomServos *servos_array[3];
 
     CustomServos servo_hip;
     CustomServos servo_knee;
@@ -290,4 +270,10 @@ void PolyDog::select_leg(int leg_number)
         servo_knee = _servoGenouA;
         servo_shoulder = _servoEpauleA;
     }
+
+    *servos_array[0] = servo_hip;
+    *servos_array[1] = servo_knee;
+    *servos_array[2] = servo_shoulder;
+
+    return *servos_array;
 }
