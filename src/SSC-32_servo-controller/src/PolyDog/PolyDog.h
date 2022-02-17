@@ -11,9 +11,11 @@ public:
     void start();
     void forward_leg(int leg_number, int step, int offset_hanche, int offset_genou);
     void hold_shoulders();
-    //void attach_all_motors();
+    // void attach_all_motors();
     void move_forward();
     void control_from_dog();
+    void move_one_leg_correctly(int leg_number);
+    void disable_all_motors();
 
 private:
     CustomServos _servoEpauleA;
