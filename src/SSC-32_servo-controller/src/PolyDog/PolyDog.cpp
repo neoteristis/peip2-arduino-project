@@ -5,8 +5,8 @@
 */
 
 #include <Arduino.h>
-#include <CustomServos.h>
-#include <PolyDog.h>
+#include "CustomServos/CustomServos.h"
+#include "PolyDog.h"
 
 PolyDog::PolyDog() : 
                      _servoEpauleA(8, "epauleA"),
@@ -21,6 +21,7 @@ PolyDog::PolyDog() :
                      _servoEpauleD(6, "epauleD"),
                      _servoHancheD(5, "hancheD"),
                      _servoGenouD(4, "genouD")
+
 {
     // HOLDER
 }
@@ -128,9 +129,8 @@ void PolyDog::hold_shoulders()
 //     _servoGenouD.attach();
 // }
 
-void PolyDog::start()
-{
-    int delay_time = 300;
+void PolyDog::start(){
+    
     // Start position
     _servoHancheA.write(abs(180 - 42));
     _servoGenouA.write(abs(180 - 85));
@@ -169,13 +169,4 @@ void PolyDog::move_forward()
 
         delay(100);
     }
-}
-
-void PolyDog::walk_sideways_leg(int leg_number, int step, int offset_hanche, int offset_genou, int offset_epaule, )
-{
-
-    CustomServos servo_hanche;
-    CustomServos servo_genou;
-    CustomServos servo_epaule;
-
 }

@@ -2,7 +2,7 @@
 #define POLY_DOG_H
 
 #include <Arduino.h>
-#include <CustomServos.h>
+#include "CustomServos/CustomServos.h"
 
 class PolyDog
 {

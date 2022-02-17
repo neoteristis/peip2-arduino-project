@@ -5,7 +5,6 @@
 */
 
 #include <Arduino.h>
-#include <Servo.h>
 #include <CustomServos.h>
 
 CustomServos::CustomServos(int pin)
@@ -15,7 +14,7 @@ CustomServos::CustomServos(int pin)
 
 void CustomServos::write(int angle)
 {
-    _servo.write(angle);
+    this->move(map(angle, 0, 180, 500, 2500), 0);
 }
 
 void CustomServos::attach()
@@ -47,4 +46,14 @@ void CustomServos::control_two_with_potentio(CustomServos servo2, int pin_potent
     Serial.print(val_servo1);
     Serial.print(" | Angle of servo02 : '");
     Serial.println(val_servo2);
+}
+
+void CustomServos::move(int position, int time) {
+   Serial.print("#");
+   Serial.print(this->_pin);
+   Serial.print(" P");
+   Serial.print(position);
+   Serial.print(" T");
+   Serial.println(time);
+   delay(time);
 }

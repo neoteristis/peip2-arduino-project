@@ -14,6 +14,8 @@ public:
     void control_two_with_potentio(CustomServos servo2, int pin_potentio1,
                                    int pin_potentio2);
 
+    void move(int position, int time);
+
 private:
     int _pin;
     Servo _servo;
