@@ -8,18 +8,19 @@
 #include <CustomServos.h>
 #include <PolyDog.h>
 
-PolyDog::PolyDog() : _servoEpauleA(36, "epauleA"),
-                     _servoHancheA(35, "hancheA"),
-                     _servoGenouA(34, "genouA"),
-                     _servoEpauleB(32, "epauleB"),
-                     _servoHancheB(31, "hancheB"),
-                     _servoGenouB(30, "genouB"),
-                     _servoEpauleC(2, "epauleC"),
-                     _servoHancheC(3, "hancheC"),
-                     _servoGenouC(4, "genouC"),
-                     _servoEpauleD(8, "epauleD"),
-                     _servoHancheD(7, "hancheD"),
-                     _servoGenouD(6, "genouD")
+PolyDog::PolyDog() : 
+                     _servoEpauleA(8, "epauleA"),
+                     _servoHancheA(9, "hancheA"),
+                     _servoGenouA(10, "genouA"),
+                     _servoEpauleB(20, "epauleB"),
+                     _servoHancheB(21, "hancheB"),
+                     _servoGenouB(22, "genouB"),
+                     _servoEpauleC(18, "epauleC"),
+                     _servoHancheC(17, "hancheC"),
+                     _servoGenouC(16, "genouC"),
+                     _servoEpauleD(6, "epauleD"),
+                     _servoHancheD(5, "hancheD"),
+                     _servoGenouD(4, "genouD")
 
 {
     // HOLDER
@@ -105,6 +106,8 @@ void PolyDog::hold_shoulders()
     _servoEpauleB.write(79);
     _servoEpauleC.write(158);
     _servoEpauleD.write(89);
+    Serial.println("ok");
+
 }
 
 void PolyDog::attach_all_motors()
@@ -163,7 +166,7 @@ void PolyDog::move_forward()
         this->forward_leg(3, (stage + decalage_C) % number_of_stages, 0, 0);
         Serial.println("jambe D");
         this->forward_leg(4, (stage + decalage_D) % number_of_stages, 180, 180);
-        Serial.println("-------------");
+        Serial.println("------ok-------");
 
         delay(100);
     }

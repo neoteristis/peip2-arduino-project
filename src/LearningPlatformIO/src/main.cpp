@@ -6,12 +6,13 @@ PolyDog dog = PolyDog();
 void setup()
 {
     dog.start();
-    dog.attach_all_motors();
     Serial.begin(9600);
+    Serial.println("oui");
 }
 
 void loop()
 {
-    //dog.move_forward();
+    dog.move_forward();
+    Serial.println("ok");
     
 }

@@ -16,7 +16,7 @@ CustomServos::CustomServos(int pin, char const *name)
 
 void CustomServos::write(int angle)
 {
-    _servo.write(angle);
+    this->move(fmap(angle, 0, 180, 500, 2500), 0);
 }
 
 void CustomServos::attach()
@@ -52,4 +52,14 @@ void CustomServos::control_two_with_potentio(CustomServos servo2, int pin_potent
     Serial.print(*name2);
     Serial.print("' : ");
     Serial.println(val_servo2);
+}
+
+void CustomServos::move(int position, int time) {
+   Serial.print("#");
+   Serial.print(this->_pin);
+   Serial.print(" P");
+   Serial.print(position);
+   Serial.print(" T");
+   Serial.println(time);
+   delay(time);
 }
