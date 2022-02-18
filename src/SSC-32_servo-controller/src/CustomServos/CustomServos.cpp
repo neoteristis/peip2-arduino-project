@@ -7,10 +7,9 @@
 #include <Arduino.h>
 #include "CustomServos.h"
 
-CustomServos::CustomServos(int pin, char const *name)
+CustomServos::CustomServos(int pin)
 {
   _pin = pin;
-  _name = *name;
 }
 
 void CustomServos::write(int angle)

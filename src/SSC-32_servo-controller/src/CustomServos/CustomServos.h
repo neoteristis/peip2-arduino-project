@@ -6,13 +6,12 @@
 class CustomServos
 {
 public:
-    CustomServos(int pin = 1, char const *name = "servo");
+    CustomServos(int pin = 1);
     void write(int angle);
     void move(int position, int time);
 
 private:
     int _pin;
-    char _name;
 };
 
 #endif
