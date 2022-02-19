@@ -14,7 +14,7 @@ void loop()
 {
     // dog.start();
     dog.move_forward();
-    // dog.hold_shoulders();
+    dog.hold_shoulders();
     // dog.move_one_leg_correctly(2);
     // dog.disable_all_motors();
     // Serial.println("#4 P0 T1000");

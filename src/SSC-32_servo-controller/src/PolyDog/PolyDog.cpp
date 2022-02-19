@@ -118,27 +118,29 @@ void PolyDog::move_forward()
 
 void PolyDog::hold_shoulders()
 {
-    _servoEpauleA.write(48);
+    _servoEpauleA.write(45);
     _servoEpauleB.write(79);
-    _servoEpauleC.write(158);
-    _servoEpauleD.write(89);
+    _servoEpauleC.write(147);
+    _servoEpauleD.write(91);
 }
 
 void PolyDog::start()
 {
-
+    int ANGLE_HANCHE = 70;
+    int ANGLE_GENOU = 70;
+    int OFFSET = 170;
     // Start position
-    _servoHancheA.write(abs(180 - 42));
-    _servoGenouA.write(abs(180 - 85));
+    _servoHancheA.write(abs(OFFSET - ANGLE_HANCHE));
+    _servoGenouA.write(abs(OFFSET - ANGLE_GENOU));
 
-    _servoHancheB.write(abs(42));
-    _servoGenouB.write(abs(85));
+    _servoHancheB.write(abs(ANGLE_HANCHE));
+    _servoGenouB.write(abs(ANGLE_GENOU));
 
-    _servoHancheC.write(abs(42));
-    _servoGenouC.write(abs(85));
+    _servoHancheC.write(abs(ANGLE_HANCHE));
+    _servoGenouC.write(abs(ANGLE_GENOU));
 
-    _servoHancheD.write(abs(180 - 42));
-    _servoGenouD.write(abs(180 - 85));
+    _servoHancheD.write(abs(OFFSET - ANGLE_HANCHE));
+    _servoGenouD.write(abs(OFFSET - ANGLE_GENOU));
 
     this->hold_shoulders();
 }
