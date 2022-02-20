@@ -10,9 +10,12 @@ public:
     PolyDog(); // Default construteur
     void start();
     void forward_leg(int leg_number, int step);
+    void forward_leg2(int leg_number, int step);
     void hold_shoulders();
     void move_forward();
+    void move_forward2();
     void control_from_dog();
+    void workout();
 
 private:
     CustomServos _servoEpauleA;
