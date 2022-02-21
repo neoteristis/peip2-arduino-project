@@ -182,7 +182,6 @@ void PolyDog::forward_leg2(int leg_number, int step)
     case 4:
         servo_hanche.write(abs(offset_hanche - 38));
         break;
-
     }
 }
 
@@ -190,9 +189,9 @@ void PolyDog::move_forward2()
 {
     int number_of_stages = 4;
     int decalage_A = 0;
-    int decalage_B = 4;
+    int decalage_B = 2;
     int decalage_C = 0;
-    int decalage_D = 4;
+    int decalage_D = 2;
 
     for (int stage = 1; stage < number_of_stages + 1; stage++)
     {
@@ -201,7 +200,7 @@ void PolyDog::move_forward2()
         this->forward_leg(3, (stage + decalage_C) % number_of_stages);
         this->forward_leg(4, (stage + decalage_D) % number_of_stages);
 
-        delay(100);
+        delay(200);
     }
 }
 
@@ -228,8 +227,8 @@ void PolyDog::start()
     _servoHancheC.write(abs(ANGLE_HANCHE));
     _servoGenouC.write(abs(ANGLE_GENOU));
 
-    _servoHancheD.write(abs(OFFSET - ANGLE_HANCHE));
-    _servoGenouD.write(abs(OFFSET - ANGLE_GENOU));
+    // _servoHancheD.write(abs(OFFSET - ANGLE_HANCHE));
+    // _servoGenouD.write(abs(OFFSET - ANGLE_GENOU));
 
     this->hold_shoulders();
 }
@@ -252,7 +251,7 @@ void PolyDog::workout()
     _servoHancheD.write(abs(OFFSET - ANGLE_HANCHE));
     _servoGenouD.write(abs(OFFSET - ANGLE_GENOU));
 
-    delay(500);
+    delay(1000);
     ANGLE_HANCHE = 50;
     ANGLE_GENOU = 60;
     // Start position
@@ -262,9 +261,7 @@ void PolyDog::workout()
     _servoHancheB.write(abs(ANGLE_HANCHE));
     _servoGenouB.write(abs(ANGLE_GENOU));
 
-    delay(500);
-    
+    delay(1000);
+
     this->hold_shoulders();
-
-
 }
