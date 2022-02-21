@@ -236,8 +236,8 @@ void PolyDog::start()
 
 void PolyDog::workout()
 {
-    int ANGLE_HANCHE = 70;
-    int ANGLE_GENOU = 70;
+    int ANGLE_HANCHE = 80;
+    int ANGLE_GENOU = 80;
     int OFFSET = 170;
     // Start position
     _servoHancheA.write(abs(OFFSET - ANGLE_HANCHE));
@@ -253,9 +253,19 @@ void PolyDog::workout()
     _servoGenouD.write(abs(OFFSET - ANGLE_GENOU));
 
     delay(500);
+    ANGLE_HANCHE = 70;
+    ANGLE_GENOU = 70;
+
+    _servoHancheA.write(abs(OFFSET - ANGLE_HANCHE));
+    _servoGenouA.write(abs(OFFSET - ANGLE_GENOU));
+
+    _servoHancheB.write(abs(ANGLE_HANCHE));
+    _servoGenouB.write(abs(ANGLE_GENOU));
+
+    delay(100);
+
     ANGLE_HANCHE = 50;
     ANGLE_GENOU = 60;
-    // Start position
     _servoHancheA.write(abs(OFFSET - ANGLE_HANCHE));
     _servoGenouA.write(abs(OFFSET - ANGLE_GENOU));
 
@@ -263,6 +273,7 @@ void PolyDog::workout()
     _servoGenouB.write(abs(ANGLE_GENOU));
 
     delay(500);
+
     
     this->hold_shoulders();
 
