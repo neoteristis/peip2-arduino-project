@@ -14,6 +14,7 @@ public:
     void hold_shoulders();
     void move_forward();
     void move_forward2();
+    void move_aside_leg(int leg_number, int step);
     void control_from_dog();
     void workout();
 

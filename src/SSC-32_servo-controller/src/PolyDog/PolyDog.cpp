@@ -31,6 +31,7 @@ void PolyDog::forward_leg(int leg_number, int step)
     CustomServos servo_hanche;
     CustomServos servo_genou;
 
+    // The arrangement of the legs means that the direction of rotation of the servo motors changes
     int offset_genou;
     int offset_hanche;
 
@@ -171,10 +172,13 @@ void PolyDog::forward_leg2(int leg_number, int step)
         break;
 
     case 2:
+        //Raise leg
         servo_genou.write(abs(offset_genou - 30));
         servo_hanche.write(abs(offset_hanche - 85));
 
     case 3:
+        // changer ici l'angle de la hanche pour qu'elle aille un peu vers l'avant
+        //
         servo_hanche.write(abs(offset_hanche - 85));
         servo_genou.write(abs(offset_genou - 77));
         break;
@@ -227,8 +231,8 @@ void PolyDog::start()
     _servoHancheC.write(abs(ANGLE_HANCHE));
     _servoGenouC.write(abs(ANGLE_GENOU));
 
-    // _servoHancheD.write(abs(OFFSET - ANGLE_HANCHE));
-    // _servoGenouD.write(abs(OFFSET - ANGLE_GENOU));
+    _servoHancheD.write(abs(OFFSET - ANGLE_HANCHE));
+    _servoGenouD.write(abs(OFFSET - ANGLE_GENOU));
 
     this->hold_shoulders();
 }
@@ -275,4 +279,83 @@ void PolyDog::workout()
 
 
     this->hold_shoulders();
+}
+
+void PolyDog::move_aside_leg(int leg_number, int step)
+{
+
+    CustomServos servo_hanche;
+    CustomServos servo_genou;
+    CustomServos servo_epaule;
+
+    int offset_genou;
+    int offset_hanche;
+    int offset_epaule;
+
+    // Selection of the leg concerned
+    switch (leg_number)
+    {
+    case 1: // LEG A
+        servo_hanche = _servoHancheA;
+        servo_genou = _servoGenouA;
+        offset_genou = 170;
+        offset_hanche = 170;
+        offset_epaule = 45;
+        break;
+    case 2: // LEG B
+        servo_hanche = _servoHancheB;
+        servo_genou = _servoGenouB;
+        offset_genou = 0;
+        offset_hanche = 0;
+        offset_epaule = 79;
+        break;
+    case 3: // LEG C
+        servo_hanche = _servoHancheC;
+        servo_genou = _servoGenouC;
+        offset_genou = 0;
+        offset_hanche = 0;
+        offset_epaule = 147;
+        break;
+    case 4: // LEG D
+        servo_hanche = _servoHancheD;
+        servo_genou = _servoGenouD;
+        offset_genou = 170;
+        offset_hanche = 170;
+        offset_epaule = 91;
+        break;
+    default:
+        servo_hanche = _servoHancheA;
+        servo_genou = _servoGenouA;
+        offset_genou = 0;
+        offset_hanche = 0;
+        offset_epaule = 50;
+    }
+
+    // Selection of the stage of the movement to do
+    // All values in the following commands were arbitraty chosen
+    switch (step)
+    {
+    default:
+    case 1:
+        servo_hanche.write(abs(offset_hanche - 50));
+        servo_genou.write(abs(offset_genou - 98));
+        break;
+    case 2:
+        servo_genou.write(abs(offset_genou - 63));
+        break;
+    case 3:
+        servo_hanche.write(abs(offset_hanche - 67));
+        break;
+    case 4:
+        servo_genou.write(abs(offset_genou - 66));
+        break;
+    case 5:
+        servo_genou.write(abs(offset_genou - 83));
+        break;
+    case 6:
+        servo_genou.write(abs(offset_genou - 98));
+        break;
+    case 7:
+        servo_hanche.write(abs(offset_hanche - 50));
+    }
 }
