@@ -14,9 +14,12 @@ public:
     void hold_shoulders();
     void move_forward();
     void move_forward2();
-    void move_aside_leg(int leg_number, int step);
+    void move_aside_leg(int leg_number);
+    void move_aside();
+    void avancer_jambe_test(int leg_number);
+    void avancer_test();
     void control_from_dog();
-    void workout();
+    void position_attente();
 
 private:
     CustomServos _servoEpauleA;
