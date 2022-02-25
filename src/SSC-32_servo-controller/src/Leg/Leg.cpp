@@ -37,8 +37,8 @@ Leg::Leg(int leg_number)
         _knee_offset = OFFSET_GENOU_C;
         _hip_offset = OFFSET_HANCHE_C;
         _shoulder_offset = OFFSET_EPAULE_C;
-        _ANGLE_MIN_SHOULDER = 40;
-        _ANGLE_MAX_SHOULDER = 270;
+        _ANGLE_MIN_SHOULDER = 60;
+        _ANGLE_MAX_SHOULDER = 250;
         break;
 
     case 4:
@@ -48,8 +48,8 @@ Leg::Leg(int leg_number)
         _knee_offset = OFFSET_GENOU_D;
         _hip_offset = OFFSET_HANCHE_D;
         _shoulder_offset = OFFSET_EPAULE_D;
-        _ANGLE_MIN_SHOULDER = 0;
-        _ANGLE_MAX_SHOULDER = 180;
+        _ANGLE_MIN_SHOULDER = 180;
+        _ANGLE_MAX_SHOULDER = 0;
         break;
 
     default:

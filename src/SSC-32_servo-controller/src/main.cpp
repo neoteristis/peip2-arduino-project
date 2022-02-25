@@ -8,23 +8,16 @@ PolyDog dog = PolyDog();
 void setup()
 {
     Serial.begin(9600);
-    // dog.start();
-    delay(400);
+    dog.start();
+    /*
+        for (int i = 0; i < 4; i++)
+        {
+            dog.leg_list[i].move_shoulder(0);
+            delay(100);
+        } */
 }
 
 void loop()
 {
-    dog.start();
-    //  dog.avancer_test();
-    //  dog.move_aside();
-    //  dog.move_forward2();
-    // dog.position_attente();
-    // dog.hold_shoulders();
-    //   dog.move_one_leg_correctly(2);
-    //   dog.disable_all_motors();
-
-    // dog.leg_list[1].move_shoulder(0);
-    // delay(3000);
-    // dog.leg_list[1].move_shoulder(90);
-    // delay(3000);
+    dog.move_forward();
 }
