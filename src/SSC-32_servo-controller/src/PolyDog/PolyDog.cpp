@@ -3,25 +3,13 @@
 #include "PolyDog/PolyDog.h"
 #include "Leg/Leg.h"
 
-PolyDog::PolyDog() : _servoEpauleA(8),  // Epaule A
-                     _servoHancheA(9),  // Hanche A
-                     _servoGenouA(10),  // Genou A
-                     _servoEpauleB(24), // Epaule B
-                     _servoHancheB(25), // Hanche B
-                     _servoGenouB(26),  // Genou B
-                     _servoEpauleC(23), // Epaule C
-                     _servoHancheC(22), // Hanche C
-                     _servoGenouC(21),  // Genou C
-                     _servoEpauleD(7),  // Epaule D
-                     _servoHancheD(6),  // Hanche D
-                     _servoGenouD(5)    // Genou D
+PolyDog::PolyDog() : legA(1), legB(2), legC(3), legD(4)
 
 {
-    Leg _leg_list[4];
-    _leg_list[0] = Leg(1);
-    _leg_list[1] = Leg(2);
-    _leg_list[2] = Leg(3);
-    _leg_list[3] = Leg(4);
+    leg_list[0] = legA;
+    leg_list[1] = legB;
+    leg_list[2] = legC;
+    leg_list[3] = legD;
 }
 
 void PolyDog::forward_leg(int leg_number, int step)
@@ -32,40 +20,6 @@ void PolyDog::forward_leg(int leg_number, int step)
     // The arrangement of the legs means that the direction of rotation of the servo motors changes
     int offset_genou;
     int offset_hanche;
-
-    // Selection of the leg concerned
-    switch (leg_number)
-    {
-    case 1: // LEG A
-        servo_hanche = _servoHancheA;
-        servo_genou = _servoGenouA;
-        offset_genou = 170;
-        offset_hanche = 170;
-        break;
-    case 2: // LEG B
-        servo_hanche = _servoHancheB;
-        servo_genou = _servoGenouB;
-        offset_genou = 0;
-        offset_hanche = 0;
-        break;
-    case 3: // LEG C
-        servo_hanche = _servoHancheC;
-        servo_genou = _servoGenouC;
-        offset_genou = 0;
-        offset_hanche = 0;
-        break;
-    case 4: // LEG D
-        servo_hanche = _servoHancheD;
-        servo_genou = _servoGenouD;
-        offset_genou = 170;
-        offset_hanche = 170;
-        break;
-    default:
-        servo_hanche = _servoHancheA;
-        servo_genou = _servoGenouA;
-        offset_genou = 0;
-        offset_hanche = 0;
-    }
 
     // Selection of the stage of the movement to do
     // All values in the following commands were arbitraty chosen
@@ -203,10 +157,10 @@ void PolyDog::move_forward2()
 
 void PolyDog::hold_shoulders()
 {
-    _servoEpauleA.write(42);
-    _servoEpauleB.write(74);
-    _servoEpauleC.write(154);
-    _servoEpauleD.write(91);
+    leg_list[0].move_shoulder(42);  // LEG A
+    leg_list[1].move_shoulder(74);  // LEG B
+    leg_list[2].move_shoulder(154); // LEG C
+    leg_list[3].move_shoulder(91);  // LEG D
 }
 
 void PolyDog::start()
@@ -214,18 +168,12 @@ void PolyDog::start()
     int ANGLE_HANCHE = 70;
     int ANGLE_GENOU = 70;
     int OFFSET = 165;
-    // Start position
-    _servoHancheA.write(abs(OFFSET - ANGLE_HANCHE));
-    _servoGenouA.write(abs(OFFSET - ANGLE_GENOU));
 
-    _servoHancheB.write(abs(ANGLE_HANCHE));
-    _servoGenouB.write(abs(ANGLE_GENOU));
-
-    _servoHancheC.write(abs(ANGLE_HANCHE));
-    _servoGenouC.write(abs(ANGLE_GENOU));
-
-    _servoHancheD.write(abs(OFFSET - ANGLE_HANCHE));
-    _servoGenouD.write(abs(OFFSET - ANGLE_GENOU));
+    for (int i = 0; i < 4; i++)
+    {
+        leg_list[i].move_hip(ANGLE_HANCHE);
+        leg_list[i].move_knee(ANGLE_GENOU);
+    }
 
     this->hold_shoulders();
 }

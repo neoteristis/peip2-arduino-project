@@ -22,24 +22,14 @@ public:
     void control_from_dog();
     void position_attente();
 
+    Leg legA;
+    Leg legB;
+    Leg legC;
+    Leg legD;
+
+    Leg leg_list[4];
+
 private:
-    CustomServos _servoEpauleA;
-    CustomServos _servoHancheA;
-    CustomServos _servoGenouA;
-
-    CustomServos _servoEpauleB;
-    CustomServos _servoHancheB;
-    CustomServos _servoGenouB;
-
-    CustomServos _servoEpauleC;
-    CustomServos _servoHancheC;
-    CustomServos _servoGenouC;
-
-    CustomServos _servoEpauleD;
-    CustomServos _servoHancheD;
-    CustomServos _servoGenouD;
-
-    Leg _leg_list;
 };
 
 #endif
