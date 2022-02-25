@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "CustomServos/CustomServos.h"
+#include "Leg/Leg.h"
 
 class PolyDog
 {
@@ -37,6 +38,8 @@ private:
     CustomServos _servoEpauleD;
     CustomServos _servoHancheD;
     CustomServos _servoGenouD;
+
+    Leg _leg_list;
 };
 
 #endif

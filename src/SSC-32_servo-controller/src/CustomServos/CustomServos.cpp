@@ -1,9 +1,3 @@
-/*
-  CustomServos.cpp - Library to use servos with custom functions
-  Created by Raphaël Anjou, Januray 29, 2022
-  Released into the public domain.
-*/
-
 #include <Arduino.h>
 #include "CustomServos.h"
 
