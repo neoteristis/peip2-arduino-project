@@ -8,7 +8,6 @@ CustomServos servo_epaule= CustomServos(8);
 void setup()
 {
     Serial.begin(9600);
-    servo_epaule.write(100);
     dog.start();
     delay(400);
 }
@@ -23,4 +22,4 @@ void loop()
     // dog.hold_shoulders();
     //  dog.move_one_leg_correctly(2);
     //  dog.disable_all_motors();
-}
+    }

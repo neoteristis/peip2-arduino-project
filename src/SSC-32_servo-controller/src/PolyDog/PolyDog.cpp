@@ -266,7 +266,7 @@ void PolyDog::position_attente()
     this->hold_shoulders();
 }
 
-void PolyDog::move_aside_leg(int leg_number)
+void PolyDog::move_aside_leg(int leg_number, int step)
 {
 
     CustomServos servo_hanche;
@@ -275,6 +275,7 @@ void PolyDog::move_aside_leg(int leg_number)
 
     int offset_genou;
     int offset_hanche;
+    int angleconverter;
     int offset_epaule;
 
     // Selection of the leg concerned
@@ -283,55 +284,94 @@ void PolyDog::move_aside_leg(int leg_number)
     case 1: // LEG A
         servo_hanche = _servoHancheA;
         servo_genou = _servoGenouA;
+        servo_epaule = _servoEpauleA;
         offset_genou = 170;
         offset_hanche = 170;
         offset_epaule = 42;
+        angleconverter = 0;
         break;
     case 2: // LEG B
         servo_hanche = _servoHancheB;
         servo_genou = _servoGenouB;
+        servo_epaule = _servoEpauleB;
         offset_genou = 0;
         offset_hanche = 0;
         offset_epaule = 74;
+        angleconverter = 0;
         break;
     case 3: // LEG C
         servo_hanche = _servoHancheC;
         servo_genou = _servoGenouC;
+        servo_epaule = _servoEpauleC;
         offset_genou = 0;
         offset_hanche = 0;
         offset_epaule = 154;
+        angleconverter = -85;
         break;
     case 4: // LEG D
         servo_hanche = _servoHancheD;
         servo_genou = _servoGenouD;
+        servo_epaule = _servoEpauleD;
         offset_genou = 170;
         offset_hanche = 170;
         offset_epaule = 91;
+        angleconverter = 180;
         break;
     }
 
-    delay(1000);
-    servo_hanche.write(abs(offset_hanche - 42));
-    servo_genou.write(abs(offset_genou - 85));
-    delay(1000);
-    servo_hanche.write(abs(offset_hanche - 55));
-    servo_genou.write(abs(offset_genou - 45));
-    delay(500);
-    servo_epaule.write(abs(offset_epaule -20));
-    delay(500);
-    servo_hanche.write(abs(offset_hanche - 42));
-    servo_genou.write(abs(offset_genou - 85));
+    if (step==1){
+        delay(500);
+        servo_hanche.write(abs(offset_hanche - 70));
+        servo_genou.write(abs(offset_genou - 70));
+        delay(500);
+        servo_hanche.write(abs(offset_hanche - 55));
+        servo_genou.write(abs(offset_genou - 45));
+        delay(500);
+        servo_epaule.write(abs(-angleconverter + offset_epaule -20));
+        delay(500);
+        servo_hanche.write(abs(offset_hanche - 80));
+        servo_genou.write(abs(offset_genou - 85));
+        delay(500);
+    }
+    else if (step==2){
+        if (leg_number==1 or leg_number==4){
+         servo_epaule.write(abs(-angleconverter + offset_epaule));
+        }
 
+        if (leg_number==2 or leg_number==3){
+         servo_epaule.write(abs(-angleconverter + offset_epaule -20));
+        }
+    }
+
+    else{
+        if (leg_number==1 or leg_number==4){
+            servo_epaule.write(abs(-angleconverter + offset_epaule +40));
+            }
+
+        if (leg_number==2 or leg_number==3){
+            servo_epaule.write(abs(-angleconverter + offset_epaule));
+            }
+    }
 
 }
 
 void PolyDog::move_aside()
 {
-    CustomServos servo_epaule;
-
-    move_aside_leg(1);
-    servo_epaule.write(100);
+    
+    move_aside_leg(1,1);
+    delay(100);
+    move_aside_leg(4,1);
     delay(500);
+    move_aside_leg(4,2);
+    move_aside_leg(1,2);
+    move_aside_leg(3,2);
+    move_aside_leg(2,2);
+    delay(100);
+    move_aside_leg(2,1);
+    delay(100);
+    move_aside_leg(3,1);
+    delay(500);
+    delay(200);
     
 
 }
