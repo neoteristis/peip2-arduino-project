@@ -22,4 +22,9 @@ void loop()
     // dog.hold_shoulders();
     //   dog.move_one_leg_correctly(2);
     //   dog.disable_all_motors();
+
+    // dog.leg_list[1].move_shoulder(0);
+    // delay(3000);
+    // dog.leg_list[1].move_shoulder(90);
+    // delay(3000);
 }

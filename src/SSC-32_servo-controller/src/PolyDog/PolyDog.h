@@ -26,8 +26,7 @@ public:
     Leg legB;
     Leg legC;
     Leg legD;
-
-    Leg leg_list[4];
+    Leg leg_list[4] = {legA, legB, legC, legD};
 
 private:
 };

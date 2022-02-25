@@ -6,12 +6,9 @@
 PolyDog::PolyDog() : legA(1), legB(2), legC(3), legD(4)
 
 {
-    leg_list[0] = legA;
-    leg_list[1] = legB;
-    leg_list[2] = legC;
-    leg_list[3] = legD;
+    // HOLDER
 }
-
+/*
 void PolyDog::forward_leg(int leg_number, int step)
 {
     CustomServos servo_hanche;
@@ -154,13 +151,13 @@ void PolyDog::move_forward2()
         delay(300);
     }
 }
-
+*/
 void PolyDog::hold_shoulders()
 {
-    leg_list[0].move_shoulder(42);  // LEG A
-    leg_list[1].move_shoulder(74);  // LEG B
-    leg_list[2].move_shoulder(154); // LEG C
-    leg_list[3].move_shoulder(91);  // LEG D
+    leg_list[0].move_shoulder(90); // LEG A
+    leg_list[1].move_shoulder(90); // LEG B
+    leg_list[2].move_shoulder(90); // LEG C
+    leg_list[3].move_shoulder(90); // LEG D
 }
 
 void PolyDog::start()
@@ -177,7 +174,7 @@ void PolyDog::start()
 
     this->hold_shoulders();
 }
-
+/*
 void PolyDog::position_attente()
 {
     int ANGLE_HANCHE = 80;
@@ -395,3 +392,4 @@ void PolyDog::avancer_test()
     // avancer_jambe_test(4);
     delay(1000);
 }
+*/

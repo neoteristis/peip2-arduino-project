@@ -7,7 +7,7 @@
 class Leg
 {
 public:
-    Leg();
+    // Leg();
     Leg(int leg_number);
     int get_knee_offset();
     int get_hip_offset();
@@ -17,8 +17,8 @@ public:
     void move_shoulder(int angle);
 
     // Constants for LEG A
-    int OFFSET_GENOU_A = 170;
-    int OFFSET_HANCHE_A = 170;
+    int OFFSET_GENOU_A = 165;
+    int OFFSET_HANCHE_A = 165;
     int OFFSET_EPAULE_A = 42;
 
     // Constants for LEG B
@@ -32,8 +32,8 @@ public:
     int OFFSET_EPAULE_C = 154;
 
     // Constants for LEG D
-    int OFFSET_GENOU_D = 170;
-    int OFFSET_HANCHE_D = 170;
+    int OFFSET_GENOU_D = 165;
+    int OFFSET_HANCHE_D = 165;
     int OFFSET_EPAULE_D = 91;
 
     CustomServos SERVO_EPAULE_A = CustomServos(8);
@@ -57,5 +57,7 @@ private:
     int _knee_offset;
     int _hip_offset;
     int _shoulder_offset;
+    int _ANGLE_MIN_SHOULDER;
+    int _ANGLE_MAX_SHOULDER;
 };
 #endif

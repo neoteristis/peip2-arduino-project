@@ -8,6 +8,8 @@ CustomServos::CustomServos(int pin)
 
 void CustomServos::write(int angle)
 {
+  Serial.print("AAAAAAAAAA : ");
+  Serial.println(angle);
   this->move(map(angle, 0, 180, 500, 2500), 0);
 }
 
