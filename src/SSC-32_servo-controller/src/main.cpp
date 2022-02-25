@@ -1,3 +1,4 @@
+/*
 #include <Arduino.h>
 #include "PolyDog/PolyDog.h"
 #include "CustomServos/CustomServos.h"
@@ -9,15 +10,16 @@ void setup()
 {
     Serial.begin(9600);
     dog.start();
-    /*
+
         for (int i = 0; i < 4; i++)
         {
             dog.leg_list[i].move_shoulder(0);
             delay(100);
-        } */
+        }
 }
 
 void loop()
 {
     dog.move_aside();
 }
+*/
