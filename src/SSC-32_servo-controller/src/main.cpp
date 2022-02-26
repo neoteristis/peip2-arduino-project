@@ -14,6 +14,7 @@ PIDLoop tiltLoop(500, 0, 500, true);
 // ------------------------
 
 PolyDog dog = PolyDog();
+
 int IrReceiverPin = 8;
 decode_results results;
 IRrecv irrecv(IrReceiverPin);
@@ -148,6 +149,7 @@ void loop()
         break;
     case 15: // LEFT button
         // The robot is going to the left
+        dog.move_left();
         break;
     case 16: // OK button
              // Camera mode : the dog is following an object

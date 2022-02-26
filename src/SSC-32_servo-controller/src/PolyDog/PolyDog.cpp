@@ -156,7 +156,7 @@ void PolyDog::start()
 
 // ------------------------------------------------
 // WIP
-void PolyDog::move_right()
+void PolyDog::move_left()
 {
     // BEGINNING OF THE MOVEMENT - LEG C
     leg_list[2].move_hip(50);
@@ -197,8 +197,6 @@ void PolyDog::move_right()
         delay(20);
     }
 
-    delay(0);
-
     // BEGINNING OF THE MOVEMENT - LEG A
     leg_list[0].move_hip(50);
     delay(100);
@@ -216,8 +214,66 @@ void PolyDog::move_right()
     leg_list[3].move_hip(70);
     leg_list[3].move_knee(80);
     delay(100);
+}
 
-    delay(0);
+void PolyDog::move_right()
+{
+    // BEGINNING OF THE MOVEMENT - LEG A
+    leg_list[0].move_hip(50);
+    delay(100);
+    leg_list[0].move_shoulder(70);
+    delay(100);
+    leg_list[0].move_hip(70);
+    leg_list[0].move_knee(80);
+    delay(100);
+
+    // BEGINNING OF THE MOVEMENT - LEG D
+    leg_list[3].move_hip(50);
+    delay(100);
+    leg_list[3].move_shoulder(70);
+    delay(100);
+    leg_list[3].move_hip(70);
+    leg_list[3].move_knee(80);
+    delay(100);
+
+    // --- ALL LEGS SIMULTANEOUSLY ---
+    for (int i = 1; i <= 10; i++)
+    {
+        // LEG A
+        leg_list[2].move_knee(70 + i);         // GOAL = 80
+        leg_list[2].move_shoulder(90 - i * 2); // GOAL = 70
+
+        // LEG B
+        leg_list[1].move_knee(70 + i);         // GOAL = 80
+        leg_list[1].move_shoulder(90 - i * 2); // GOAL = 70
+
+        // GOES TO START PLACE - LEG C
+        leg_list[0].move_shoulder(70 + i * 2); // GOAL = 90
+        leg_list[0].move_knee(80 - i);         // GOAL = 70
+        // GOES TO START PLACE - LEG B
+        leg_list[3].move_shoulder(70 + i * 2); // GOAL = 90
+        leg_list[3].move_knee(80 - i);         // GOAL = 70
+
+        delay(20);
+    }
+
+    // BEGINNING OF THE MOVEMENT - LEG C
+    leg_list[2].move_hip(50);
+    delay(100);
+    leg_list[2].move_shoulder(90);
+    delay(100);
+    leg_list[2].move_hip(70);
+    leg_list[2].move_knee(80);
+    delay(100);
+
+    // BEGINNING OF THE MOVEMENT - LEG B
+    leg_list[1].move_hip(50);
+    delay(100);
+    leg_list[1].move_shoulder(90);
+    delay(100);
+    leg_list[1].move_hip(70);
+    leg_list[1].move_knee(80);
+    delay(100);
 }
 // ------------------------------------------------
 

@@ -22,6 +22,7 @@ public:
     // void move_aside();
     void excitment();
     void move_right();
+    void move_left();
     void move_backward();
 
     Leg legA;
