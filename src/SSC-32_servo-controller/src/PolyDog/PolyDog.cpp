@@ -14,10 +14,8 @@ void PolyDog::excitment()
 {
     leg_list[0].move_knee(60);
     leg_list[0].move_hip(50);
-    // leg_list[2].move_knee(60);
-    // leg_list[2].move_hip(50);
 
-    delay(200);
+    delay(150);
 
     leg_list[0].move_knee(70);
     leg_list[0].move_hip(70);

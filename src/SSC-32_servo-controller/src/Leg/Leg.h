@@ -23,7 +23,7 @@ public:
 
     // Constants for LEG B
     int OFFSET_GENOU_B = 0;
-    int OFFSET_HANCHE_B = 0;
+    int OFFSET_HANCHE_B = -25;
     int OFFSET_EPAULE_B = 74;
 
     // Constants for LEG C

@@ -106,7 +106,7 @@ void loop()
 
     switch (remote_choice)
     {
-    case 0:
+    case 16: // OK button
         // ROBOT IS STATIC
         dog.start();
         break;
@@ -151,8 +151,8 @@ void loop()
         // The robot is going to the left
         dog.move_left();
         break;
-    case 16: // OK button
-             // Camera mode : the dog is following an object
+    case 0: // button 0
+            // Camera mode : the dog is following an object
 
         int32_t panOffset, tiltOffset;
 
