@@ -52,10 +52,9 @@ void PolyDog::self_balancing()
 // ------------------------------------------------
 
 // ------------------------------------------------
-// OK - might need to check it again
+// DON'T WORK
 void PolyDog::crawl_leg(int leg_number)
 {
-
     leg_number -= 1;
 
     delay(100);
@@ -68,10 +67,9 @@ void PolyDog::crawl_leg(int leg_number)
     leg_list[leg_number].move_hip(65);
     leg_list[leg_number].move_knee(75);
 }
-// OK - might need to check it again
+// DON'T WORK
 void PolyDog::crawl()
 {
-
     this->crawl_leg(1);
     delay(100);
     this->crawl_leg(2);
@@ -104,7 +102,32 @@ void PolyDog::move_forward()
         leg_list[i].move_hip(70);
         leg_list[i].move_knee(70);
     }
-    // delay(1000000000);
+}
+// NOT WORKING
+void PolyDog::move_backward()
+{
+    // DEBUT (ACTUAL POSITION : 70 | 70)
+    hold_shoulders();
+
+    for (int i = 0; i < 4; i++)
+    {
+        delay(100);
+        leg_list[i].move_hip(75);
+        leg_list[i].move_knee(60);
+        delay(100);
+        leg_list[i].move_hip(75);
+        leg_list[i].move_knee(50);
+        delay(100);
+        leg_list[i].move_hip(65);
+        leg_list[i].move_knee(65);
+    }
+
+    delay(100);
+    for (int i = 0; i < 4; i++)
+    {
+        leg_list[i].move_hip(70);
+        leg_list[i].move_knee(70);
+    }
 }
 // ------------------------------------------------
 
@@ -132,85 +155,69 @@ void PolyDog::start()
 // ------------------------------------------------
 
 // ------------------------------------------------
-// NO BUENO
-void PolyDog::move_aside_leg(int leg_number, int step)
+// WIP
+void PolyDog::move_right()
 {
-    leg_number -= 1; // TO REMOVE IF WE START COUNTING FROM 0 THE LEGS
-
-    if (step == 1)
-    {
-        delay(500);
-        leg_list[leg_number].move_hip(70);
-        leg_list[leg_number].move_knee(70);
-        delay(500);
-        leg_list[leg_number].move_hip(55);
-        leg_list[leg_number].move_knee(45);
-        delay(500);
-        leg_list[leg_number].move_shoulder(80);
-        delay(500);
-        leg_list[leg_number].move_hip(80);
-        leg_list[leg_number].move_knee(85);
-        delay(500);
-    }
-    else if (step == 3)
-    {
-        delay(200);
-        leg_list[leg_number].move_hip(70);
-        leg_list[leg_number].move_knee(70);
-        delay(200);
-        leg_list[leg_number].move_hip(55);
-        leg_list[leg_number].move_knee(45);
-        delay(200);
-        leg_list[leg_number].move_shoulder(90);
-        delay(200);
-        leg_list[leg_number].move_hip(80);
-        leg_list[leg_number].move_knee(85);
-        delay(200);
-    }
-
-    else if (step == 2)
-    {
-        if (leg_number == 1 or leg_number == 4)
-        {
-            leg_list[leg_number].move_shoulder(90);
-        }
-
-        if (leg_number == 2 or leg_number == 3)
-        {
-            leg_list[leg_number].move_shoulder(80);
-        }
-    }
-
-    else
-    {
-        if (leg_number == 1 or leg_number == 4)
-        {
-            leg_list[leg_number].move_shoulder(90);
-        }
-
-        if (leg_number == 2 or leg_number == 3)
-        {
-            leg_list[leg_number].move_shoulder(90);
-        }
-    }
-}
-// NO BUENO
-void PolyDog::move_aside()
-{
-
-    move_aside_leg(1, 1);
+    // BEGINNING OF THE MOVEMENT - LEG C
+    leg_list[2].move_hip(50);
     delay(100);
-    move_aside_leg(4, 1);
-    delay(200);
-    move_aside_leg(4, 2);
-    move_aside_leg(1, 2);
-    move_aside_leg(3, 2);
-    move_aside_leg(2, 2);
+    leg_list[2].move_shoulder(70);
     delay(100);
-    move_aside_leg(2, 3);
+    leg_list[2].move_hip(70);
+    leg_list[2].move_knee(80);
     delay(100);
-    move_aside_leg(3, 3);
-    delay(200);
+
+    // BEGINNING OF THE MOVEMENT - LEG B
+    leg_list[1].move_hip(50);
+    delay(100);
+    leg_list[1].move_shoulder(70);
+    delay(100);
+    leg_list[1].move_hip(70);
+    leg_list[1].move_knee(80);
+    delay(100);
+
+    // --- ALL LEGS SIMULTANEOUSLY ---
+    for (int i = 1; i <= 10; i++)
+    {
+        // LEG A
+        leg_list[0].move_knee(70 + i);         // GOAL = 80
+        leg_list[0].move_shoulder(90 - i * 2); // GOAL = 70
+
+        // LEG B
+        leg_list[3].move_knee(70 + i);         // GOAL = 80
+        leg_list[3].move_shoulder(90 - i * 2); // GOAL = 70
+
+        // GOES TO START PLACE - LEG C
+        leg_list[2].move_shoulder(70 + i * 2); // GOAL = 90
+        leg_list[2].move_knee(80 - i);         // GOAL = 70
+        // GOES TO START PLACE - LEG B
+        leg_list[1].move_shoulder(70 + i * 2); // GOAL = 90
+        leg_list[1].move_knee(80 - i);         // GOAL = 70
+
+        delay(20);
+    }
+
+    delay(0);
+
+    // BEGINNING OF THE MOVEMENT - LEG A
+    leg_list[0].move_hip(50);
+    delay(100);
+    leg_list[0].move_shoulder(90);
+    delay(100);
+    leg_list[0].move_hip(70);
+    leg_list[0].move_knee(80);
+    delay(100);
+
+    // BEGINNING OF THE MOVEMENT - LEG D
+    leg_list[3].move_hip(50);
+    delay(100);
+    leg_list[3].move_shoulder(90);
+    delay(100);
+    leg_list[3].move_hip(70);
+    leg_list[3].move_knee(80);
+    delay(100);
+
+    delay(0);
 }
 // ------------------------------------------------
 

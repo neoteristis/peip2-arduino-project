@@ -1,8 +1,17 @@
-#include <Arduino.h>
+/* #include <Arduino.h>
 #include "PolyDog/PolyDog.h"
 #include "CustomServos/CustomServos.h"
 #include "Leg/Leg.h"
 #include <IRremote.h>
+
+// ----- PIXY RELATED -----
+#include <Pixy2.h>
+#include <PIDLoop.h>
+
+Pixy2 pixy;
+PIDLoop panLoop(400, 0, 400, true);
+PIDLoop tiltLoop(500, 0, 500, true);
+// ------------------------
 
 PolyDog dog = PolyDog();
 int IrReceiverPin = 8;
@@ -13,9 +22,16 @@ int remote_choice = 0; // DEFAULT CHOICE : ROBOT IS STATIC
 
 void setup()
 {
-    Serial.begin(9600);
+    Serial.begin(115200); // TODO : change the serial value of the card
     dog.start();
     irrecv.enableIRIn();
+
+    // ----- PIXY RELATED -----
+    // We need to initialize the pixy object
+    pixy.init();
+    // Use color connected components program for the pan tilt to track
+    pixy.changeProg("color_connected_components");
+    // ------------------------
 }
 
 void loop()
@@ -94,8 +110,6 @@ void loop()
         dog.start();
         break;
     case 1:
-        // The dog is "crawling"
-        dog.crawl();
         break;
     case 2:
         break;
@@ -136,10 +150,39 @@ void loop()
         // The robot is going to the left
         break;
     case 16: // OK button
-        // Camera mode : the dog is following an object
-        // NOT FOR THE JPO - TOO HARD
+             // Camera mode : the dog is following an object
+
+        int32_t panOffset, tiltOffset;
+
+        // get active blocks from Pixy
+        pixy.ccc.getBlocks();
+
+        if (pixy.ccc.numBlocks)
+        {
+
+            // calculate pan and tilt "errors" with respect to first object (blocks[0]),
+            // which is the biggest object (they are sorted by size).
+            panOffset = (int32_t)pixy.frameWidth / 2 - (int32_t)pixy.ccc.blocks[0].m_x;
+            tiltOffset = (int32_t)pixy.ccc.blocks[0].m_y - (int32_t)pixy.frameHeight / 2;
+
+            // update loops
+            panLoop.update(panOffset);
+            tiltLoop.update(tiltOffset);
+
+            // set pan and tilt servos
+            pixy.setServos(panLoop.m_command, tiltLoop.m_command);
+
+            dog.move_forward();
+        }
+        else // no object detected, go into reset state
+        {
+            // panLoop.reset();
+            // tiltLoop.reset();
+            // pixy.setServos(panLoop.m_command, tiltLoop.m_command);
+        }
+
         break;
     default:
         break;
     }
-}
+} */

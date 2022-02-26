@@ -18,9 +18,11 @@ public:
     void move_forward2();
     void crawl_leg(int leg_number);
     void crawl();
-    void move_aside_leg(int leg_number, int step);
-    void move_aside();
+    // void move_aside_leg(int leg_number, int step);
+    // void move_aside();
     void excitment();
+    void move_right();
+    void move_backward();
 
     Leg legA;
     Leg legB;
