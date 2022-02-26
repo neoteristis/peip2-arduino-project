@@ -1,27 +1,25 @@
 #include <Arduino.h>
-/*
 #include "PolyDog/PolyDog.h"
 #include "CustomServos/CustomServos.h"
-#include "Leg/Leg.h" */
+#include "Leg/Leg.h"
 #include <IRremote.h>
 
-// PolyDog dog = PolyDog();
-int IrReceiverPin = 2;
+PolyDog dog = PolyDog();
+int IrReceiverPin = 8;
 decode_results results;
 IRrecv irrecv(IrReceiverPin);
 
-int remote_choice;
+int remote_choice = 0; // DEFAULT CHOICE : ROBOT IS STATIC
 
 void setup()
 {
     Serial.begin(9600);
-    // dog.start();
+    dog.start();
     irrecv.enableIRIn();
 }
 
 void loop()
 {
-    remote_choice = 0; // DEFAULT CHOICE : ROBOT IS STATIC
 
     if (irrecv.decode(&results))
     {
@@ -34,55 +32,55 @@ void loop()
         {
 
         case 0xFF629D: // button UP
-            Serial.println("BOUTON UP");
+            remote_choice = 12;
             break;
         case 0xFFC23D: // button RIGHT
-            Serial.println("BOUTON RIGHT");
+            remote_choice = 13;
             break;
         case 0xFFA857: // button BOTTOM
-            Serial.println("BOUTON BOTTOM");
+            remote_choice = 14;
             break;
         case 0xFF22DD: // button LEFT
-            Serial.println("BOUTON LEFT");
+            remote_choice = 15;
             break;
         case 0xFF02FD: // button CENTER
-            Serial.println("BOUTON CENTER");
+            remote_choice = 16;
             break;
         case 0xFF6897: // button 1
-            Serial.println("BOUTON 1");
+            remote_choice = 1;
             break;
         case 0xFF9867: // button 2
-            Serial.println("BOUTON 2");
+            remote_choice = 2;
             break;
         case 0xFFB04F: // button 3
-            Serial.println("BOUTON 3");
+            remote_choice = 3;
             break;
         case 0xFF30CF: // button 4
-            Serial.println("BOUTON 4");
+            remote_choice = 4;
             break;
         case 0xFF18E7: // button 5
-            Serial.println("BOUTON 5");
+            remote_choice = 5;
             break;
         case 0xFF7A85: // button 6
-            Serial.println("BOUTON 6");
+            remote_choice = 6;
             break;
         case 0xFF10EF: // button 7
-            Serial.println("BOUTON 7");
+            remote_choice = 7;
             break;
         case 0xFF38C7: // button 8
-            Serial.println("BOUTON 8");
+            remote_choice = 8;
             break;
         case 0xFF5AA5: // button 9
-            Serial.println("BOUTON 9");
+            remote_choice = 9;
             break;
         case 0xFF42BD: // button *
-            Serial.println("BOUTON *");
+            remote_choice = 10;
             break;
         case 0xFF4AB5: // button 0
-            Serial.println("BOUTON 0");
+            remote_choice = 0;
             break;
         case 0xFF52AD: // button #
-            Serial.println("BOUTON #");
+            remote_choice = 11;
             break;
         }
     }
@@ -93,9 +91,11 @@ void loop()
     {
     case 0:
         // ROBOT IS STATIC
+        dog.start();
         break;
     case 1:
         // The dog is "crawling"
+        dog.crawl();
         break;
     case 2:
         break;
@@ -115,15 +115,19 @@ void loop()
         break;
     case 10: // * button
         // The robot is in a waiting movement, juste like a game player waiting
+        dog.self_balancing();
         break;
     case 11: // # button
         // The robot is doing a little excitement thing
+        dog.excitment();
         break;
     case 12: // UP button
         // The robot is going forward
+        dog.move_forward();
         break;
     case 13: // RIGHT button
         // The robot is going to the right
+        dog.move_aside();
         break;
     case 14: // DOWN button
         // The robot is going backward
@@ -133,6 +137,7 @@ void loop()
         break;
     case 16: // OK button
         // Camera mode : the dog is following an object
+        // NOT FOR THE JPO - TOO HARD
         break;
     default:
         break;

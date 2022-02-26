@@ -9,31 +9,54 @@ PolyDog::PolyDog() : legA(1), legB(2), legC(3), legD(4)
     // HOLDER
 }
 
-void PolyDog::self_balancing(){
+// ------------------------------------------------
+void PolyDog::excitment()
+{
+    leg_list[0].move_knee(60);
+    leg_list[0].move_hip(50);
+    // leg_list[2].move_knee(60);
+    // leg_list[2].move_hip(50);
 
-    for (int i=0; i <20; i++){
-        legA.move_shoulder(80+i);
-        legB.move_shoulder(100-i);
-        legC.move_shoulder(100-i);
-        legD.move_shoulder(80+i);
-        delay(50);
-    }
+    delay(200);
 
-    for (int i=0; i <20; i++){
-        legA.move_shoulder(100-i);
-        legB.move_shoulder(80+i);
-        legC.move_shoulder(80+i);
-        legD.move_shoulder(100-i);
-        delay(50);
-    }
+    leg_list[0].move_knee(70);
+    leg_list[0].move_hip(70);
 
-    delay(100);
-
+    delay(150);
 }
+// ------------------------------------------------
 
-void PolyDog::crawl_leg(int leg_number){
+// ------------------------------------------------
+// OK
+void PolyDog::self_balancing()
+{
 
-    leg_number-=1;
+    for (int i = 0; i < 20; i++)
+    {
+        legA.move_shoulder(80 + i);
+        legB.move_shoulder(100 - i);
+        legC.move_shoulder(100 - i);
+        legD.move_shoulder(80 + i);
+        delay(20);
+    }
+
+    for (int i = 0; i < 20; i++)
+    {
+        legA.move_shoulder(100 - i);
+        legB.move_shoulder(80 + i);
+        legC.move_shoulder(80 + i);
+        legD.move_shoulder(100 - i);
+        delay(20);
+    }
+}
+// ------------------------------------------------
+
+// ------------------------------------------------
+// OK - might need to check it again
+void PolyDog::crawl_leg(int leg_number)
+{
+
+    leg_number -= 1;
 
     delay(100);
     leg_list[leg_number].move_hip(70);
@@ -45,18 +68,22 @@ void PolyDog::crawl_leg(int leg_number){
     leg_list[leg_number].move_hip(65);
     leg_list[leg_number].move_knee(75);
 }
-
-void PolyDog::crawl(){
+// OK - might need to check it again
+void PolyDog::crawl()
+{
 
     this->crawl_leg(1);
     delay(100);
     this->crawl_leg(2);
-
 }
+// ------------------------------------------------
 
+// ------------------------------------------------
+// OK
 void PolyDog::move_forward()
 {
     // DEBUT (ACTUAL POSITION : 70 | 70)
+    hold_shoulders();
 
     for (int i = 0; i < 4; i++)
     {
@@ -79,58 +106,10 @@ void PolyDog::move_forward()
     }
     // delay(1000000000);
 }
+// ------------------------------------------------
 
-/*
-void PolyDog::move_forward()
-{
-    int number_of_stages = 16;
-    int decalage_A = 0;
-    int decalage_B = 8;
-    int decalage_C = 4;
-    int decalage_D = 12;
-
-    for (int stage = 1; stage < number_of_stages + 1; stage++)
-    {
-        this->forward_leg(1, (stage + decalage_A) % number_of_stages);
-        this->forward_leg(2, (stage + decalage_B) % number_of_stages);
-        this->forward_leg(3, (stage + decalage_C) % number_of_stages);
-        this->forward_leg(4, (stage + decalage_D) % number_of_stages);
-
-        // delay(300);
-        delay(100);
-    }
-
-    // delay(500);
-} */
-
-void PolyDog::forward_leg(int leg_number, int step)
-{
-    leg_number -= 1;
-    // Selection of the stage of the movement to do
-    // All values in the following commands were arbitraty chosen
-
-    if (step == 1)
-    {
-        leg_list[leg_number].move_hip(70);
-        leg_list[leg_number].move_knee(70);
-    }
-    else if (step == 2)
-    {
-        leg_list[leg_number].move_hip(55);
-        leg_list[leg_number].move_knee(45);
-    }
-    else if (step == 3)
-    {
-        leg_list[leg_number].move_hip(90);
-        leg_list[leg_number].move_knee(50);
-    }
-    else if (step == 4)
-    {
-        leg_list[leg_number].move_hip(100);
-        leg_list[leg_number].move_knee(70);
-    }
-}
-
+// ------------------------------------------------
+// GOOD
 void PolyDog::hold_shoulders()
 {
     leg_list[0].move_shoulder(90); // LEG A
@@ -138,7 +117,7 @@ void PolyDog::hold_shoulders()
     leg_list[2].move_shoulder(90); // LEG C
     leg_list[3].move_shoulder(90); // LEG D
 }
-
+// GOOD
 void PolyDog::start()
 {
     for (int i = 0; i < 4; i++)
@@ -150,7 +129,10 @@ void PolyDog::start()
 
     this->hold_shoulders();
 }
+// ------------------------------------------------
 
+// ------------------------------------------------
+// NO BUENO
 void PolyDog::move_aside_leg(int leg_number, int step)
 {
     leg_number -= 1; // TO REMOVE IF WE START COUNTING FROM 0 THE LEGS
@@ -190,7 +172,7 @@ void PolyDog::move_aside_leg(int leg_number, int step)
     {
         if (leg_number == 1 or leg_number == 4)
         {
-            leg_list[leg_number].move_shoulder(90); 
+            leg_list[leg_number].move_shoulder(90);
         }
 
         if (leg_number == 2 or leg_number == 3)
@@ -212,7 +194,7 @@ void PolyDog::move_aside_leg(int leg_number, int step)
         }
     }
 }
-
+// NO BUENO
 void PolyDog::move_aside()
 {
 
@@ -230,6 +212,7 @@ void PolyDog::move_aside()
     move_aside_leg(3, 3);
     delay(200);
 }
+// ------------------------------------------------
 
 /*
 void PolyDog::forward_leg2(int leg_number, int step)

@@ -20,6 +20,7 @@ public:
     void crawl();
     void move_aside_leg(int leg_number, int step);
     void move_aside();
+    void excitment();
 
     Leg legA;
     Leg legB;
