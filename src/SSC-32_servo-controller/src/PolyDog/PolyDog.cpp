@@ -1,31 +1,83 @@
+// Copyright (c) 2022-2022. ANJOU Raphaël & DURAND Hugo
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 #include <Arduino.h>
-#include "CustomServos/CustomServos.h"
+#include "CustomServo/CustomServo.h"
 #include "PolyDog/PolyDog.h"
 #include "Leg/Leg.h"
 
+/**
+ * This method is the {@code PolyDog} initializer.
+ * It is just creating the {@code Leg} instances.
+ *
+ * @author ANJOU Raphael
+ */
 PolyDog::PolyDog() : legA(1), legB(2), legC(3), legD(4)
-
 {
     // HOLDER
 }
 
-// ------------------------------------------------
-void PolyDog::excitment()
+/**
+ * This method places the robot in an upright stable position.
+ * <p>
+ * This method takes a minimum of 400ms to execute due to 4 delays of 100ms.
+ * <p>
+ * The algorithm just consists in moving every knee and hip motors to the desired value.
+ *
+ * @author ANJOU Raphael
+ */
+void PolyDog::start()
 {
-    leg_list[0].move_knee(60);
-    leg_list[0].move_hip(50);
+    for (int i = 0; i < 4; i++)
+    {
+        leg_list[i].move_hip(70);
+        leg_list[i].move_knee(70);
+        delay(100);
+    }
 
-    delay(150);
-
-    leg_list[0].move_knee(70);
-    leg_list[0].move_hip(70);
-
-    delay(150);
+    this->hold_shoulders();
 }
-// ------------------------------------------------
 
-// ------------------------------------------------
-// OK
+/**
+     * This method place the shoulder in a position where all legs are perpendicular to the ground.
+     * <p>
+     * There are no delays in this methods. It might be necessary to put some delay after executing it if the shoulders
+     * need to move right after.
+     * <p>
+     * The algorithm consists in placing all shoulder motors at a 90 degrees angle.
+     *
+     * @author ANJOU Raphael
+     */
+void PolyDog::hold_shoulders()
+{
+    legA.move_shoulder(90);
+    legB.move_shoulder(90);
+    legC.move_shoulder(90);
+    legD.move_shoulder(90);
+}
+
+/**
+ * This method moves the robot body from left to right using only his shoulders.
+ * If placed in a loop, it creates a nice waiting animation.
+ * <p>
+ * This method takes a minimum of 800ms to execute due to 40 delays of 20ms.
+ * <p>
+ * The algorithm consists of two loops, each one of 20 steps. They allow a smooth movement between two desired positions
+ * of the robot. One of the loop moves it to the right, and the next one to the left.
+ *
+ * @author DURAND Hugo
+ */
 void PolyDog::self_balancing()
 {
 
@@ -47,40 +99,48 @@ void PolyDog::self_balancing()
         delay(20);
     }
 }
-// ------------------------------------------------
 
-// ------------------------------------------------
-// DON'T WORK
-void PolyDog::crawl_leg(int leg_number)
+/**
+ * This method moves only the leg A up and down once.
+ * If placed in a loop, it creates a nice excitement like animation.
+ * <p>
+ * This method takes a minimum of 300ms to execute due to 2 delays of 150ms.
+ * <p>
+ * The algorithm is very simple. We are just moving the leg up a little bit, waiting, and moving it back to default
+ * position.
+ *
+ * @author ANJOU Raphael & DURAND Hugo
+ */
+void PolyDog::excitement()
 {
-    leg_number -= 1;
+    legA.move_knee(60);
+    legA.move_hip(50);
 
-    delay(100);
-    leg_list[leg_number].move_hip(70);
-    leg_list[leg_number].move_knee(70);
-    delay(100);
-    leg_list[leg_number].move_hip(55);
-    leg_list[leg_number].move_knee(45);
-    delay(100);
-    leg_list[leg_number].move_hip(65);
-    leg_list[leg_number].move_knee(75);
-}
-// DON'T WORK
-void PolyDog::crawl()
-{
-    this->crawl_leg(1);
-    delay(100);
-    this->crawl_leg(2);
-}
-// ------------------------------------------------
+    delay(150);
 
-// ------------------------------------------------
-// OK
+    legA.move_knee(70);
+    legA.move_hip(70);
+
+    delay(150);
+}
+
+/**
+ * This methods moves the robot one step forward.
+ * If placed in a loop, the robot appears to be walking smoothly.
+ * <p>
+ * This method takes a minimum of 1300ms to execute due to 13 delays of 100ms.
+ * <p>
+ * The algorithm consists in moving each foot forward a little bit. When all of them are forward be make each leg come
+ * back to their starting position.
+ *
+ * @author ANJOU Raphael & DURAND Hugo
+ */
 void PolyDog::move_forward()
 {
-    // DEBUT (ACTUAL POSITION : 70 | 70)
+    // To make sure that all legs are perpendicular to the ground
     hold_shoulders();
 
+    // This loop will repeat the same movement for all four legs
     for (int i = 0; i < 4; i++)
     {
         delay(100);
@@ -95,230 +155,153 @@ void PolyDog::move_forward()
     }
 
     delay(100);
+
+    // This loop will repeat the same movement for all four legs
     for (int i = 0; i < 4; i++)
     {
         leg_list[i].move_hip(70);
         leg_list[i].move_knee(70);
     }
 }
-// NOT WORKING
-void PolyDog::move_backward()
-{
-    // DEBUT (ACTUAL POSITION : 70 | 70)
-    hold_shoulders();
 
-    for (int i = 0; i < 4; i++)
-    {
-        delay(100);
-        leg_list[i].move_hip(75);
-        leg_list[i].move_knee(60);
-        delay(100);
-        leg_list[i].move_hip(75);
-        leg_list[i].move_knee(50);
-        delay(100);
-        leg_list[i].move_hip(65);
-        leg_list[i].move_knee(65);
-    }
-
-    delay(100);
-    for (int i = 0; i < 4; i++)
-    {
-        leg_list[i].move_hip(70);
-        leg_list[i].move_knee(70);
-    }
-}
-// ------------------------------------------------
-
-// ------------------------------------------------
-// GOOD
-void PolyDog::hold_shoulders()
-{
-    leg_list[0].move_shoulder(90); // LEG A
-    leg_list[1].move_shoulder(90); // LEG B
-    leg_list[2].move_shoulder(90); // LEG C
-    leg_list[3].move_shoulder(90); // LEG D
-}
-// GOOD
-void PolyDog::start()
-{
-    for (int i = 0; i < 4; i++)
-    {
-        leg_list[i].move_hip(70);
-        leg_list[i].move_knee(70);
-        delay(100);
-    }
-
-    this->hold_shoulders();
-}
-// ------------------------------------------------
-
-// ------------------------------------------------
-// WIP
-void PolyDog::move_left()
-{
-    // BEGINNING OF THE MOVEMENT - LEG C
-    leg_list[2].move_hip(50);
-    delay(100);
-    leg_list[2].move_shoulder(70);
-    delay(100);
-    leg_list[2].move_hip(70);
-    leg_list[2].move_knee(80);
-    delay(100);
-
-    // BEGINNING OF THE MOVEMENT - LEG B
-    leg_list[1].move_hip(50);
-    delay(100);
-    leg_list[1].move_shoulder(70);
-    delay(100);
-    leg_list[1].move_hip(70);
-    leg_list[1].move_knee(80);
-    delay(100);
-
-    // --- ALL LEGS SIMULTANEOUSLY ---
-    for (int i = 1; i <= 10; i++)
-    {
-        // LEG A
-        leg_list[0].move_knee(70 + i);         // GOAL = 80
-        leg_list[0].move_shoulder(90 - i * 2); // GOAL = 70
-
-        // LEG B
-        leg_list[3].move_knee(70 + i);         // GOAL = 80
-        leg_list[3].move_shoulder(90 - i * 2); // GOAL = 70
-
-        // GOES TO START PLACE - LEG C
-        leg_list[2].move_shoulder(70 + i * 2); // GOAL = 90
-        leg_list[2].move_knee(80 - i);         // GOAL = 70
-        // GOES TO START PLACE - LEG B
-        leg_list[1].move_shoulder(70 + i * 2); // GOAL = 90
-        leg_list[1].move_knee(80 - i);         // GOAL = 70
-
-        delay(20);
-    }
-
-    // BEGINNING OF THE MOVEMENT - LEG A
-    leg_list[0].move_hip(50);
-    delay(100);
-    leg_list[0].move_shoulder(90);
-    delay(100);
-    leg_list[0].move_hip(70);
-    leg_list[0].move_knee(80);
-    delay(100);
-
-    // BEGINNING OF THE MOVEMENT - LEG D
-    leg_list[3].move_hip(50);
-    delay(100);
-    leg_list[3].move_shoulder(90);
-    delay(100);
-    leg_list[3].move_hip(70);
-    leg_list[3].move_knee(80);
-    delay(100);
-}
-
+/**
+ * This methods moves the robot one step to the right.
+ * WARNING : It is still not working properly. The robot needs to be lifted a little bit to walk properly.
+ * If placed in a loop, the robot appears to be walking sideways.
+ * <p>
+ * This method takes a minimum of 1400ms due to 12 delays of 100ms and 10 delays of 20ms
+ * <p>
+ * The algorithm consists of 3 main steps. First, we are moving leg B and leg C to the left one after the other. The
+ * second step consists in moving shoulders B and C so that they are above their respective foot and moving shoulders A
+ * and D to follow the body (all of the shoulders move simultaneously). Final step consists in bringing back the feet of
+ * the legs B and C.
+ *
+ * @author ANJOU Raphael
+ */
 void PolyDog::move_right()
 {
-    // BEGINNING OF THE MOVEMENT - LEG A
-    leg_list[0].move_hip(50);
+    // LEG A
+    legA.move_hip(50);
     delay(100);
-    leg_list[0].move_shoulder(70);
+    legA.move_shoulder(70);
     delay(100);
-    leg_list[0].move_hip(70);
-    leg_list[0].move_knee(80);
+    legA.move_hip(70);
+    legA.move_knee(80);
     delay(100);
 
-    // BEGINNING OF THE MOVEMENT - LEG D
-    leg_list[3].move_hip(50);
+    // LEG D
+    legD.move_hip(50);
     delay(100);
-    leg_list[3].move_shoulder(70);
+    legD.move_shoulder(70);
     delay(100);
-    leg_list[3].move_hip(70);
-    leg_list[3].move_knee(80);
+    legD.move_hip(70);
+    legD.move_knee(80);
     delay(100);
 
     // --- ALL LEGS SIMULTANEOUSLY ---
     for (int i = 1; i <= 10; i++)
     {
-        // LEG A
-        leg_list[2].move_knee(70 + i);         // GOAL = 80
-        leg_list[2].move_shoulder(90 - i * 2); // GOAL = 70
+        legC.move_knee(70 + i);         // GOAL = 80
+        legC.move_shoulder(90 - i * 2); // GOAL = 70
 
-        // LEG B
-        leg_list[1].move_knee(70 + i);         // GOAL = 80
-        leg_list[1].move_shoulder(90 - i * 2); // GOAL = 70
+        legB.move_knee(70 + i);         // GOAL = 80
+        legB.move_shoulder(90 - i * 2); // GOAL = 70
 
-        // GOES TO START PLACE - LEG C
-        leg_list[0].move_shoulder(70 + i * 2); // GOAL = 90
-        leg_list[0].move_knee(80 - i);         // GOAL = 70
-        // GOES TO START PLACE - LEG B
-        leg_list[3].move_shoulder(70 + i * 2); // GOAL = 90
-        leg_list[3].move_knee(80 - i);         // GOAL = 70
+        legA.move_shoulder(70 + i * 2); // GOAL = 90
+        legA.move_knee(80 - i);         // GOAL = 70
+
+        legD.move_shoulder(70 + i * 2); // GOAL = 90
+        legD.move_knee(80 - i);         // GOAL = 70
 
         delay(20);
     }
 
-    // BEGINNING OF THE MOVEMENT - LEG C
-    leg_list[2].move_hip(50);
+    // LEG C
+    legC.move_hip(50);
     delay(100);
-    leg_list[2].move_shoulder(90);
+    legC.move_shoulder(90);
     delay(100);
-    leg_list[2].move_hip(70);
-    leg_list[2].move_knee(80);
+    legC.move_hip(70);
+    legC.move_knee(80);
     delay(100);
 
-    // BEGINNING OF THE MOVEMENT - LEG B
-    leg_list[1].move_hip(50);
+    // LEG B
+    legB.move_hip(50);
     delay(100);
-    leg_list[1].move_shoulder(90);
+    legB.move_shoulder(90);
     delay(100);
-    leg_list[1].move_hip(70);
-    leg_list[1].move_knee(80);
+    legB.move_hip(70);
+    legB.move_knee(80);
     delay(100);
 }
-// ------------------------------------------------
 
-/*
-void PolyDog::forward_leg2(int leg_number, int step)
+/**
+ * This methods moves the robot one step to the left.
+ * WARNING : It is still not working properly. The robot needs to be lifted a little bit to walk properly.
+ * If placed in a loop, the robot appears to be walking sideways.
+ * <p>
+ * This method takes a minimum of 1400ms due to 12 delays of 100ms and 10 delays of 20ms
+ * <p>
+ * The algorithm consists of 3 main steps. First, we are moving leg C and leg B to the left one after the other. The
+ * second step consists in moving shoulders A and D so that they are above their respective foot and moving shoulders B
+ * and C to follow the body (all of the shoulders move simultaneously). Final step consists in bringing back the feet of
+ * the legs A and D.
+ *
+ * @author ANJOU Raphael
+ */
+void PolyDog::move_left()
 {
-    // Selection of the stage of the movement to do
-    // All values in the following commands were arbitraty chosen
-    switch (step)
+    // LEG C
+    legC.move_hip(50);
+    delay(100);
+    legC.move_shoulder(70);
+    delay(100);
+    legC.move_hip(70);
+    legC.move_knee(80);
+    delay(100);
+
+    // LEG B
+    legB.move_hip(50);
+    delay(100);
+    legB.move_shoulder(70);
+    delay(100);
+    legB.move_hip(70);
+    legB.move_knee(80);
+    delay(100);
+
+    // --- ALL LEGS SIMULTANEOUSLY ---
+    for (int i = 1; i <= 10; i++)
     {
-    default:
-    case 1:
-        leg_list[leg_number - 1].move_hip(70);
-        leg_list[leg_number - 1].move_knee(70);
-        break;
+        legA.move_knee(70 + i);         // GOAL = 80
+        legA.move_shoulder(90 - i * 2); // GOAL = 70
 
-    case 2:
-        leg_list[leg_number - 1].move_hip(60);
-        leg_list[leg_number - 1].move_knee(45);
+        legD.move_knee(70 + i);         // GOAL = 80
+        legD.move_shoulder(90 - i * 2); // GOAL = 70
 
-    case 3:
-        leg_list[leg_number - 1].move_hip(90);
-        leg_list[leg_number - 1].move_knee(60);
+        legC.move_shoulder(70 + i * 2); // GOAL = 90
+        legC.move_knee(80 - i);         // GOAL = 70
 
-    case 4:
-        leg_list[leg_number - 1].move_hip(70);s
-        leg_list[leg_number - 1].move_knee(90);
+        legB.move_shoulder(70 + i * 2); // GOAL = 90
+        legB.move_knee(80 - i);         // GOAL = 70
+
+        delay(20);
     }
+
+    // LEG A
+    legA.move_hip(50);
+    delay(100);
+    legA.move_shoulder(90);
+    delay(100);
+    legA.move_hip(70);
+    legA.move_knee(80);
+    delay(100);
+
+    // LEG D
+    legD.move_hip(50);
+    delay(100);
+    legD.move_shoulder(90);
+    delay(100);
+    legD.move_hip(70);
+    legD.move_knee(80);
+    delay(100);
 }
-
-void PolyDog::move_forward2()
-{
-    int number_of_stages = 16;
-    int decalage_A = 0;
-    int decalage_B = 4;
-    int decalage_C = 8;
-    int decalage_D = 12;
-
-    for (int stage = 1; stage < number_of_stages + 1; stage++)
-    {
-        this->forward_leg(1, (stage + decalage_A) % number_of_stages);
-        this->forward_leg(2, (stage + decalage_B) % number_of_stages);
-        this->forward_leg(3, (stage + decalage_C) % number_of_stages);
-        this->forward_leg(4, (stage + decalage_D) % number_of_stages);
-
-        delay(300);
-    }
-}
-
-*/
