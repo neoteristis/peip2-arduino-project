@@ -4,7 +4,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;Je pense qu'on aurait pu faire un long métrage si on avait filmé tous les échecs de marche avant pour le robot... En voici l'un deux :
 
-[Échec marche avant](seance07_illustrations/robot-ne-marchant-pas.mp4)
+[Échec marche avant]()
 
 ## Marche synchronisée
 
@@ -79,3 +79,13 @@ _Photos prises à 23h30 ("seulement" 2 cafés déjà pris à ce moment là)_
 &nbsp;&nbsp;&nbsp;&nbsp;Le robot ne peut pas suivre un objet car il ne peut pas se déplacer sur le côté ni tourner. En revanche, il sait détecter lorsqu'un objet bleu est devant lui, si c'est le cas, il commence à marcher tout droit.
 
 [Démonstration détection objet bleu]()
+
+## Liste des vidéos qui vont être mis sur Youtube
+
+- demonstration-infrarouge.mp4
+- following-blue-square.mp4
+- il-marche-enfin.mp4
+- robot-ne-marchant-pas.mp4
+- walking-forward-with-help.mp4
+
+Ces vidéos sont dans le dossier : [ici](seance07_illustrations)
