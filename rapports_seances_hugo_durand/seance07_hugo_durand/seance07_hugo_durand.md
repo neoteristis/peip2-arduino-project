@@ -62,3 +62,5 @@ J'ai modifié également les bras de maintien des épaules (ou plus logiquement 
 </figure>
 
 J'ai rajouté également deux clips pour les cables pour tester si cela fonctionne mais pour le moment j'en suis pas très convaincu.
+
+## Assemblage du nouveau corps
