@@ -3,7 +3,6 @@
 ## Adaptation du code pour le nouveau controleur de servo moteur
 
 Pour envoyer une commande à un servo branché sur le pin 4, pour qu'il aille à un angle de 90 degré en 500 millisecondes, on écrit :
-
 ```c++
 //Code en Arduino
 #4P1000T500;
@@ -77,7 +76,7 @@ Puis nous avons démonté l'ancien corps de robot pour y extraire les 4 pattes :
   <img src="demontage-robot.png" width="500" title="demontage-robot.png"/>
 </figure>
 
-Lorsque j'ai pu assemblé la pièce 3D des côtes du bas et le ssc32-servo controller, j'étais très content parce que l'emboitement s'est fait parfaitement :
+Lorsque j'ai pu assemblé la pièce 3D des côtes du bas et le ssc32-servo controller, j'étais très content parce que l'emboîtement s'est fait parfaitement :
 
 <figure align="center">
   <img src="ssc32taille.jpeg" width="500" title="ssc32taille.jpeg"/>
@@ -90,6 +89,27 @@ Nous avons ensuite continué l'assemblage entre les deux pièces qui viennent ma
 </figure>
 
 ## Problèmes rencontrés
+
+Premier soucis : mettre les insert dans le corps nous a été très compliqué, nous avons eu beaucoup d'erreur. 
+
+Nous avons pu les résoudre en retouchant l'insert et en refondant le plastique pour replacer convenablement l'insert. Parfois, nous avons dû grossir le trou de la vis pour que l'alignement entre le pas de vis et l'insert soit plus optimal.
+
+Deuxième soucis : nous avons cassé à moitié le bras orange au niveau où on place les vis parce que le design à ce niveau n'est pas assez épais. Avec un peu de colle ultra-forte, le problème est contourné. Les vis qui viennent maintenir l'ensemble renforce sa solidité.
+
+<figure align="center">
+  <img src="pièce_cassée.jpeg" width="500" title="pièce_cassée.jpeg"/>
+</figure>  
+
+Troisième soucis : nous avons cassé une autre pièce du montage, les côtes du bas.
+
+ Explication : nous avons placés un insert sur un endroit délicat et pas très épais.
+ 
+  Nous avons visser l'ensemble pour tester le pas de vis, mais en dévissant pour continuer le montage, l'insert n'était plus bloqué dans le plastique, on a donc forcé dessus pour faire sortir la vis. Un bout de la pièce est venu avec la vis. Mais c'est pas grave, une fois l'ensemble vissé ce n'est pas très génant :
+
+<figure align="center">
+  <img src="Nouveau_robot_pret.jpeg" width="500" title="Nouveau_robot_pret.jpeg"/>
+</figure>  
+
 
 
 
