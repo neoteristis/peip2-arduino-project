@@ -48,7 +48,7 @@ public:
      * @param leg_number The leg chosen, this value will affects which servos and constants are used
      */
     Leg(int leg_number);
-
+    Leg();
     /**
      * This method will move the knee servo to the correct angle by considering the offsets constants
      * @param angle The desired angle to move the servo to
