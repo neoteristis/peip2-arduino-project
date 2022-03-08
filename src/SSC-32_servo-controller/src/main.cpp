@@ -1,51 +1,51 @@
+// Copyright (c) 2022-2022. ANJOU Raphaël & DURAND Hugo
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 #include <Arduino.h>
 #include "PolyDog/PolyDog.h"
-#include "CustomServos/CustomServos.h"
+#include "CustomServo/CustomServo.h"
 #include "Leg/Leg.h"
 #include <IRremote.h>
-
-// ----- PIXY RELATED -----
 #include <Pixy2.h>
 #include <PIDLoop.h>
 
+// ------ INITIALIZATION ------
 Pixy2 pixy;
 PIDLoop panLoop(400, 0, 400, true);
 PIDLoop tiltLoop(500, 0, 500, true);
-// ------------------------
 
 PolyDog dog = PolyDog();
+
 int IrReceiverPin = 8;
 decode_results results;
-IRrecv irrecv(IrReceiverPin);
+IRrecv IRreceiver(IrReceiverPin);
 
-int remote_choice = 0; // DEFAULT CHOICE : ROBOT IS STATIC
+int remote_choice = 0; // Default choice : robot is standing and not moving
+// ------ END OF INITIALIZATION ------
 
-void setup()
+/**
+ * This method translates the button pushed on the remote to a number that can then be used to know which method
+ * needs to be execute in the main loop. Assigning the choice to a variable makes it possible to push a button only once
+ * and still have the method running in the main loop.
+ *
+ * @param results the data received by the infrared receiver
+ * @return a number between 0 and 16 which is later used to decide which method needs to be called
+ */
+int getRemoteChoice(uint32_t results)
 {
-    Serial.begin(115200); // TODO : change the serial value of the card
-    dog.start();
-    irrecv.enableIRIn();
-
-    // ----- PIXY RELATED -----
-    // We need to initialize the pixy object
-    pixy.init();
-    // Use color connected components program for the pan tilt to track
-    pixy.changeProg("color_connected_components");
-    // ------------------------
-}
-
-void loop()
-{
-
-    if (irrecv.decode(&results))
+    switch (results)
     {
-
-        // Serial.println(results.value, HEX);
-
-        irrecv.resume();
-
-        switch (results.value)
-        {
 
         case 0xFF629D: // button UP
             remote_choice = 12;
@@ -98,59 +98,47 @@ void loop()
         case 0xFF52AD: // button #
             remote_choice = 11;
             break;
-        }
+    }
+
+    return remote_choice;
+}
+
+/**
+ * This method is executed only once at the beginning of the program.
+ * It initialize the Serial communication (baud rate = 115200), the PolyDog instance, the infrared communication and the
+ * Pixy Cam.
+ */
+void setup()
+{
+    Serial.begin(115200);
+
+    dog.start();
+
+    IRreceiver.enableIRIn();
+
+    pixy.init();
+    pixy.changeProg("color_connected_components");
+}
+
+/**
+ * This method is a loop that is executed infinitely right after the setup(). It manages the logic of which method is
+ * executed by the robot. It also reads the value from the infrared remote.
+ */
+void loop()
+{
+
+    if (IRreceiver.decode())
+    {
+        IRreceiver.resume();
+        remote_choice = getRemoteChoice(IrReceiver.decodedIRData.decodedRawData);
     }
 
     delay(100);
 
     switch (remote_choice)
     {
-    case 0:
-        // ROBOT IS STATIC
-        dog.start();
-        break;
-    case 1:
-        break;
-    case 2:
-        break;
-    case 3:
-        break;
-    case 4:
-        break;
-    case 5:
-        break;
-    case 6:
-        break;
-    case 7:
-        break;
-    case 8:
-        break;
-    case 9:
-        break;
-    case 10: // * button
-        // The robot is in a waiting movement, juste like a game player waiting
-        dog.self_balancing();
-        break;
-    case 11: // # button
-        // The robot is doing a little excitement thing
-        dog.excitment();
-        break;
-    case 12: // UP button
-        // The robot is going forward
-        dog.move_forward();
-        break;
-    case 13: // RIGHT button
-        // The robot is going to the right
-        dog.move_right();
-        break;
-    case 14: // DOWN button
-        // The robot is going backward
-        dog.move_backward();
-    case 15: // LEFT button
-        // The robot is going to the left
-        break;
-    case 16: // OK button
-             // Camera mode : the dog is following an object
+    case 0: // button 0
+            // Camera mode : the dog is following an object
 
         int32_t panOffset, tiltOffset;
 
@@ -176,11 +164,48 @@ void loop()
         }
         else // no object detected, go into reset state
         {
-            // panLoop.reset();
-            // tiltLoop.reset();
-            // pixy.setServos(panLoop.m_command, tiltLoop.m_command);
+            panLoop.reset();
+            tiltLoop.reset();
+            pixy.setServos(panLoop.m_command, tiltLoop.m_command);
         }
 
+        break;
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+        break;
+    case 10: // * button
+        // The robot is in a waiting movement, juste like a game player waiting
+        dog.self_balancing();
+        break;
+    case 11: // # button
+        // The robot is doing a little excitement thing
+        dog.excitement();
+        break;
+    case 12: // UP button
+        // The robot is going forward
+        dog.move_forward();
+        break;
+    case 13: // RIGHT button
+        // The robot is going to the right
+        dog.move_right();
+        break;
+    case 14: // DOWN button
+        // The robot is going backward
+        break;
+    case 15: // LEFT button
+        // The robot is going to the left
+        dog.move_left();
+        break;
+    case 16: // OK button
+        // ROBOT IS STATIC
+        dog.start();
         break;
     default:
         break;

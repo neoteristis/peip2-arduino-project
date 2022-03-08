@@ -1,4 +1,4 @@
-# Séance 5 : 04/02/2022 -> 11/02/2022
+# Séance 6 : 04/02/2022 -> 11/02/2022
 
 ## Test de résistance au poids
 
