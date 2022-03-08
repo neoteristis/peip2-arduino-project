@@ -64,3 +64,32 @@ J'ai modifié également les bras de maintien des épaules (ou plus logiquement 
 J'ai rajouté également deux clips pour les cables pour tester si cela fonctionne mais pour le moment j'en suis pas très convaincu.
 
 ## Assemblage du nouveau corps
+
+Nous avons commencé par insérer des insert dans le nouveau corps, une étape délicate, qui n'a pas été filmé. Le principe est de faire chauffer le plastique autour de l'insert avec une panne de fer à souder. L'insert descend dans la matière plastique jusqu'à ne plus dépasser de la surface. Il faut être très attentif à ce que l'insert se place droit et qu'il ne soit pas décalé, sinon la vis ne rentre pas :
+
+<figure align="center">
+  <img src="insert.png" width="500" title="insert.png"/>
+</figure>
+
+Puis nous avons démonté l'ancien corps de robot pour y extraire les 4 pattes :
+
+<figure align="center">
+  <img src="demontage-robot.png" width="500" title="demontage-robot.png"/>
+</figure>
+
+Lorsque j'ai pu assemblé la pièce 3D des côtes du bas et le ssc32-servo controller, j'étais très content parce que l'emboitement s'est fait parfaitement :
+
+<figure align="center">
+  <img src="ssc32taille.jpeg" width="500" title="ssc32taille.jpeg"/>
+</figure>
+
+Nous avons ensuite continué l'assemblage entre les deux pièces qui viennent maintenir les boitier de servo-moteurs que j'appelle les bras avec les côtes du bas et le support de fixation des moteurs centraux. Nous avons dû bien évidemment poncer certaines surface de pièce 3D. J'ai oublié de prendre en compte la marge d'erreur de l'imprimante 3D qui est de environ 0.4 mm. Cette imprecision reportée sur plusieurs couche de matière entraîne des écarts de 1.3 mm :
+
+<figure align="center">
+  <img src="Montageducorps.jpeg" width="500" title="Montageducorps.jpeg"/>
+</figure>
+
+## Problèmes rencontrés
+
+
+
