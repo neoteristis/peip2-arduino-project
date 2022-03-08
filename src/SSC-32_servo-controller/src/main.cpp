@@ -145,7 +145,7 @@ void loop()
         break;
     case 14: // DOWN button
         // The robot is going backward
-        break;
+        dog.move_backward();
     case 15: // LEFT button
         // The robot is going to the left
         break;

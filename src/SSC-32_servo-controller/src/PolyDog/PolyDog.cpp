@@ -113,13 +113,13 @@ void PolyDog::move_backward()
     {
         delay(100);
         leg_list[i].move_hip(75);
-        leg_list[i].move_knee(60);
+        leg_list[i].move_knee(80);
         delay(100);
-        leg_list[i].move_hip(75);
+        leg_list[i].move_hip(55);
         leg_list[i].move_knee(50);
-        delay(100);
-        leg_list[i].move_hip(65);
-        leg_list[i].move_knee(65);
+        delay(50);
+        leg_list[i].move_hip(50);
+        leg_list[i].move_knee(100);
     }
 
     delay(100);
@@ -219,6 +219,7 @@ void PolyDog::move_right()
 
     delay(0);
 }
+
 // ------------------------------------------------
 
 /*
