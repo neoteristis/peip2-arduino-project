@@ -35,8 +35,12 @@ Nous avons choisi de construire la patte sur le modèle du parallélogramme. Un 
 |IR remote control GT017 |1 | 
 |MG995R Servo motor |12 | 
 |Pixy2 Camera|1 |  
-|Power supply 30A 12V 360W |4|   
+|Power supply 30A 12V 360W |4|  
 
+## 3D Printed Pieces
+
+
+![](part_list.PNG)
 
 
 
