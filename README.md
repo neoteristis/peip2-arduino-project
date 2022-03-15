@@ -13,7 +13,7 @@ novembre 2021 - mars 2022
 ## Présentation
 
 <figure align="center">
-  <img src="polydog.png" width="300" title=""/>
+  <img src="polydog.png" width="1000" title=""/>
 </figure>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Polydog, notre chien robot est né d'une inspiration de son grand frère, le robot **Spot** de ***Boston Dynamics***.
