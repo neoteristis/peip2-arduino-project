@@ -1,0 +1,14 @@
+research/quadruped_robot_diy/** filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/infrared-communication.png filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/montage-robot02.png filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/etabli-en-bazar.gif filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/demontage-robot.png filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/following-blue-square.mp4 filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/il-marche-enfin.mp4 filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/montage-robot01.png filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/nettoyage-pieces.png filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/robot-ne-marchant-pas.mp4 filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/robot-synchronise.gif filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/demonstration-infrarouge.mp4 filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/walking-forward-with-help.mp4 filter=lfs diff=lfs merge=lfs -text
+rapports_seances_raphael_anjou/seance07_illustrations/seflie-nuit-blanche.png filter=lfs diff=lfs merge=lfs -text
