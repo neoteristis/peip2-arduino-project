@@ -2,6 +2,8 @@
 
 ## Presentation
 
+![PolyDog exploded view](/polydog-v1/docs/robot-exploded-view-without-background.png)
+
 ## Summary
 
 - [Presentation](https://github.com/naxomi/peip2-arduino-project#presentation)
