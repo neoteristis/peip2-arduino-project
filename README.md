@@ -10,8 +10,8 @@
 <tbody> <!--Table Body-->
     <tr> <!-- TABLE HEADER -->
         <th align="center">Name</th>
-        <th align="center" width="220">Preview</th>
-        <th align="center" width="180">Description</th>
+        <th align="center" width="250">Preview</th>
+        <th align="center">Description</th>
         <th align="center">Material</th>
     </tr>
     <tr> <!--Line-->
