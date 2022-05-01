@@ -2,6 +2,26 @@
 
 ## Presentation
 
+## Summary
+
+- [Presentation](https://github.com/naxomi/peip2-arduino-project#presentation)
+- [Summary](https://github.com/naxomi/peip2-arduino-project#summary)
+- [Robot Parts](https://github.com/naxomi/peip2-arduino-project#robot-parts)
+  - [Leg Parts](https://github.com/naxomi/peip2-arduino-project#leg-parts)
+  - [Body Parts](https://github.com/naxomi/peip2-arduino-project#body-parts)
+- [Electronic Components](https://github.com/naxomi/peip2-arduino-project#electronic-components)
+  - [Arduino UNO](https://github.com/naxomi/peip2-arduino-project#arduino-uno)
+  - [SSC-32 Servo Controller](https://github.com/naxomi/peip2-arduino-project#ssc-32-servo-controller)
+  - [Servos](https://github.com/naxomi/peip2-arduino-project#servos)
+  - [Infrared Remote](https://github.com/naxomi/peip2-arduino-project#infrared-remote)
+  - [Pixy Cam 2](https://github.com/naxomi/peip2-arduino-project#pixy-cam-2)
+  - [Power Source](https://github.com/naxomi/peip2-arduino-project#power-source)
+- [Flowchart](https://github.com/naxomi/peip2-arduino-project#flowchart)
+  - [Initialization](https://github.com/naxomi/peip2-arduino-project#initialization)
+  - [Remote Control](https://github.com/naxomi/peip2-arduino-project#remote-control)
+  - [Camera](https://github.com/naxomi/peip2-arduino-project#camera)
+  - [Movements](https://github.com/naxomi/peip2-arduino-project#movements)
+
 ## Robot Parts
 
 ### Leg parts
@@ -162,7 +182,7 @@
 
 ### Pixy Cam 2
 
-### Energy source
+### Power source
 
 ## Flowchart
 
