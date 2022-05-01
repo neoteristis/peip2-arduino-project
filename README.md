@@ -2,22 +2,153 @@
 
 ## Presentation
 
-## Materials
+## Robot Parts
 
-### Leg 3D-printed parts
+### Leg parts
 
-| Name  |                                                            Image                                                             | Description |
-| :---: | :--------------------------------------------------------------------------------------------------------------------------: | :---------: |
-|       |                                                          Body Parts                                                          |             |
-|       |                                                          Leg Parts                                                           |             |
-| Knee  | ![knee-preview](/polydog-v1/docs/parts-preview/knee-left.png) ![knee-preview](/polydog-v1/docs/parts-preview/knee-right.png) |  blablabla  |
-|  Hip  |                                       ![hip-preview](/polydog-v1/docs/parts-preview/)                                        |  blablabla  |
-| Femur |                                      ![femur-preview](/polydog-v1/docs/parts-preview/)                                       |  blablabla  |
-|       |                                                    Electronic Components                                                     |             |
+<table> <!--Table-->
+<tbody> <!--Table Body-->
+    <tr> <!-- TABLE HEADER -->
+        <th align="center">Name</th>
+        <th align="center" width="220">Preview</th>
+        <th align="center">Description</th>
+        <th align="center">Material</th>
+    </tr>
+    <tr> <!--Line-->
+        <td>Femur</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/femur-left.png"
+            width="100" />
+            <img src="./polydog-v1/docs/parts-preview/femur-right.png" width="114" />
+        </td>
+        <td align="center">Attached to the hip to hold the knee. Is connected to the tibia.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+    <tr> <!--Line-->
+        <td align="center">Foot</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/foot.png"
+            width="90" />
+        </td>
+        <td align="center">Attached at the end of every tibia, it helps with the grip on the floor.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+    <tr> <!--Line-->
+        <td align="center">Gear</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/gear.png"
+            width="130" />
+        </td>
+        <td align="center">Attached to the servo responsible for the whole leg movement. Is connected to the hip.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+    <tr> <!--Line-->
+        <td align="center">Hip</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/hip-left.png"
+            width="104" />
+            <img src="./polydog-v1/docs/parts-preview/hip-right.png" width="107" />
+        </td>
+        <td align="center">Link between the servo motor for the whole leg and the femur. Is moved by a gear. Hold the knee in place.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+    <tr> <!--Line-->
+        <td align="center">Knee</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/knee-left.png"
+            width="100" />
+            <img src="./polydog-v1/docs/parts-preview/knee-right.png" width="110" />
+        </td>
+        <td align="center">Link between the servo motor for the knee and the tendon to make the anatomical knee move. Directly attached to the servo.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+        <tr> <!--Line-->
+        <td align="center">Leg Holder</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/leg-holder.png"
+            width="130" />
+        </td>
+        <td align="center">Hold the two servo motors necessary to make the leg move.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+    <tr> <!--Line-->
+        <td align="center">Tendon</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/tendon.png"
+            width="130" />
+        </td>
+        <td align="center">Link between the knee and the tibia.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+    <tr> <!--Line-->
+        <td align="center">Tibia</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/tibia.png"
+            width="130" />
+        </td>
+        <td align="center">Link between the foot, the femur and the tibia. Is moved by the tendon and rotates around the point where the femur is attached.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+</tbody>
+</table>
 
-### Body 3D-printed parts
+### Body parts
 
-### Others
+<table> <!--Table-->
+<tbody> <!--Table Body-->
+    <tr> <!-- TABLE HEADER -->
+        <th align="center">Name</th>
+        <th align="center">Preview</th>
+        <th align="center">Description</th>
+        <th aling="center">Material</th>
+    </tr>
+    <tr> <!--Line-->
+        <td>Back</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/back.png"
+            width="300"/>
+        </td>
+        <td align="center">Close the robot body to protect and hide all the hardware and cables inside.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+    <tr> <!--Line-->
+        <td>Base</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/base.png"
+            width="300"/>
+        </td>
+        <td align="center">Core of the body structure.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+    <tr> <!--Line-->
+        <td>Ribs</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/ribs.png"
+            width="300"/>
+        </td>
+        <td align="center">Help with the rigidity of the whole body. Protect the hardware from being hit. Hold the SSC-32.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+    <tr> <!--Line-->
+        <td>Servo Bracket</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/servo-bracket.png"
+            width="300"/>
+        </td>
+        <td align="center">Hold one servo motor in place.</td>
+        <td align="center">Aluminium</td>
+    </tr>
+    <tr> <!--Line-->
+        <td>Spine</td>
+        <td align="center">
+            <img src="./polydog-v1/docs/parts-preview/spine.png"
+            width="300"/>
+        </td>
+        <td align="center">Hold two legs and store the power cable.</td>
+        <td align="center">3D-printed</td>
+    </tr>
+</table>
+</tbody>
 
 ## Electronic Components
 
