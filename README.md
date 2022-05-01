@@ -2,7 +2,11 @@
 
 ## Presentation
 
-WRITE TEXT
+> This project has taken place during the Arduino Class of the second year of prep school at Polytech Nice Sophia.  
+> In the text, "We" will represent Raphaël Anjou and Hugo Durand, who worked together on this project.  
+> We had four months to build any project we wanted as long as it used Arduino hardware. A robot dog was an idea that we found very challenging and entertaining.
+
+> Dozens of other robots inspired us to do this project and helped us in the design of our robot.
 
 ![Robot Pictures](polydog-v1/docs/illustrations/polydog-v1.png)
 
@@ -179,7 +183,6 @@ WRITE TEXT
         <th align="center" width="95">Name</th>
         <th align="center">Preview</th>
         <th align="center">Description</th>
-        <th aling="center" width="75">Reference</th>
     </tr>
     <tr> <!--Line-->
         <td align="center">Arduino UNO</td>
@@ -188,7 +191,6 @@ WRITE TEXT
             width="300"/>
         </td>
         <td align="center">Robot brain.</td>
-        <td align="center">XXXX</td>
     </tr>
     <tr> <!--Line-->
         <td align="center">SSC-32 Servo Controller</td>
@@ -197,7 +199,6 @@ WRITE TEXT
             width="300"/>
         </td>
         <td align="center">Receives command from the Arduino UNO to control every servo motor.</td>
-        <td align="center">XXXX</td>
     </tr>
     <tr> <!--Line-->
         <td align="center">Servo motors</td>
@@ -206,18 +207,16 @@ WRITE TEXT
             width="300"/>
         </td>
         <td align="center">Moves the part of the body they are connected to.</td>
-        <td align="center">XXXX</td>
     </tr>
     <tr> <!--Line-->
         <td align="center">Infrared Remote & Receiver</td>
         <td align="center">
             <img src="./polydog-v1/docs/robot-parts/illustrations/infrared-remote.png"
-            width="50"/>
+            width="70"/>
             <img src="./polydog-v1/docs/robot-parts/illustrations/infrared-receiver.png"
-            width="60"/>
+            width="70"/>
         </td>
         <td align="center">Remote control of the robot movements and actions.</td>
-        <td align="center">Aluminium</td>
     </tr>
     <tr> <!--Line-->
         <td align="center">Pixy Cam 2 & Mount</td>
@@ -226,7 +225,6 @@ WRITE TEXT
             width="300"/>
         </td>
         <td align="center">Camera of the robot. Is able to detect colors. The camera can be moved on 2 axis with it's mount.</td>
-        <td align="center">XXXX</td>
     </tr>
     <tr> <!--Line-->
         <td align="center">Power source</td>
@@ -235,7 +233,6 @@ WRITE TEXT
             width="300"/>
         </td>
         <td align="center">Powers all the electronic components. 30 Amperes and 5 Volts. </td>
-        <td align="center">XXXX</td>
     </tr>
 </table>
 </tbody>
