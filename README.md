@@ -11,11 +11,11 @@
     <tr> <!-- TABLE HEADER -->
         <th align="center">Name</th>
         <th align="center" width="220">Preview</th>
-        <th align="center">Description</th>
+        <th align="center" width="180">Description</th>
         <th align="center">Material</th>
     </tr>
     <tr> <!--Line-->
-        <td>Femur</td>
+        <td align="center">Femur</td>
         <td align="center">
             <img src="./polydog-v1/docs/parts-preview/femur-left.png"
             width="100" />
@@ -103,7 +103,7 @@
         <th aling="center">Material</th>
     </tr>
     <tr> <!--Line-->
-        <td>Back</td>
+        <td align="center">Back</td>
         <td align="center">
             <img src="./polydog-v1/docs/parts-preview/back.png"
             width="300"/>
@@ -112,7 +112,7 @@
         <td align="center">3D-printed</td>
     </tr>
     <tr> <!--Line-->
-        <td>Base</td>
+        <td align="center">Base</td>
         <td align="center">
             <img src="./polydog-v1/docs/parts-preview/base.png"
             width="300"/>
@@ -121,7 +121,7 @@
         <td align="center">3D-printed</td>
     </tr>
     <tr> <!--Line-->
-        <td>Ribs</td>
+        <td align="center">Ribs</td>
         <td align="center">
             <img src="./polydog-v1/docs/parts-preview/ribs.png"
             width="300"/>
@@ -130,7 +130,7 @@
         <td align="center">3D-printed</td>
     </tr>
     <tr> <!--Line-->
-        <td>Servo Bracket</td>
+        <td align="center">Servo Bracket</td>
         <td align="center">
             <img src="./polydog-v1/docs/parts-preview/servo-bracket.png"
             width="300"/>
@@ -139,7 +139,7 @@
         <td align="center">Aluminium</td>
     </tr>
     <tr> <!--Line-->
-        <td>Spine</td>
+        <td align="center">Spine</td>
         <td align="center">
             <img src="./polydog-v1/docs/parts-preview/spine.png"
             width="300"/>
