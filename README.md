@@ -2,7 +2,7 @@
 
 ## Presentation
 
-![PolyDog exploded view](/polydog-v1/docs/robot-exploded-view-without-background.png)
+![Robot Pictures](polydog-v1/docs/polydog-v1.png)
 
 ## Summary
 
@@ -25,6 +25,8 @@
   - [Movements](https://github.com/naxomi/peip2-arduino-project#movements)
 
 ## Robot Parts
+
+![PolyDog exploded view](/polydog-v1/docs/robot-exploded-view-without-background.png)
 
 ### Leg parts
 
