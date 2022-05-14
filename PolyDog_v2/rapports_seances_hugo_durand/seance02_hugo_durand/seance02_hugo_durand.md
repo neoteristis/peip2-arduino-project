@@ -6,16 +6,16 @@
 
 A castorama ou a leroy merlin, il n'y pas un éventail de taille et dimension extraordinaire. Nous avons donc constitué nos propres carrés d'alu.
 
-On a chipé deux trois plaque d'alu de différentes épaisseur qu'on pouvait trouver.
+On a chipé deux-trois plaques d'alu de différentes épaisseurs qu'on pouvait trouver.
 
-On a commencer par la plaque d'alu, support principale du corps :
+On a commencer par la plaque d'alu, support principale du corps:
 
 <figure align="center">
   <img src="corps.jpeg" width="300" title=""/>
   <figcaption></figcaption>
 </figure>
 
-Nous avons eu un peu de mal, pour plier les bouts de métal. La plieuse apporte des contraintes au niveau des pliages suivant le premier, car la plaque ne passe plus dans la machine. On a fini le travail à coup de marteau, laissant des finitions pas tip top.
+Nous avons eu un peu de mal, pour plier les bouts de métal. La plieuse apporte des contraintes au niveau des pliages à la suite du premier pliage, car la plaque ne passe plus dans la machine. On a fini le travail à coup de marteau, laissant des finitions pas tip top.
 
 <figure align="center">
   <img src="jeune_travailleur.jpeg" width="300" title=""/>
@@ -26,7 +26,7 @@ On a fait de nombreuses mesures sur la taille des découpes de l'alu pour que le
 
 //Photo des carrés d'alu avec le moteur. //
 
-L'outils par excellence pour notre découpe a été la dremel :
+L'outils par excellence pour notre découpe a été la dremel. Bien que par endroit, c'est plus rapide de la faire à la scie.
 
 <figure align="center">
   <img src="dremel.jpeg" width="300" title=""/>
