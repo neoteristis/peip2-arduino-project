@@ -32,7 +32,24 @@ Les maintiens de roulement ont tous été imprimés :
   <figcaption></figcaption>
 </figure>
 
-Pour finir sur cette semaine, j'ai scié la tige en métal, fixer les embouts qui maintiennent le boîtier de la patte dans son axe.
+J'ai scié la tige en métal, fixer les embouts qui maintiennent le boîtier de la patte dans son axe.
+
+J'ai compris ce qui n'allait pas dans les engrenages. Lorsque je faisais une vue ne coupe pour vérifier la relation entre les engrenages, je la faisais au milieu d'une tranche hélicoïdal. Je referais une nouvelle impression pour tester.
+
+J'ai également renforcer les boîtiers de servo moteurs pour si jamais on les reimprime.
+
+<figure align="center">
+  <img src="boitier_plus_costaud.PNG" width="300" title=""/>
+  <figcaption></figcaption>
+</figure>
+
+Pour finir j'ai crée les support de la carte ARDUINO UNO et le servo controller SSC32 :
+
+<figure align="center">
+  <img src="support_ssc32_uno.PNG" width="300" title=""/>
+  <figcaption></figcaption>
+</figure>
+
 
 
 
