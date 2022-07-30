@@ -41,8 +41,8 @@ void PolyDog::start()
 {
     for (int i = 0; i < 4; i++)
     {
-        leg_list[i].move_hip(90);
-        leg_list[i].move_knee(90);
+        leg_list[i].move_hip(70);
+        leg_list[i].move_knee(140);
         delay(100);
     }
 
@@ -144,23 +144,14 @@ void PolyDog::move_forward()
     for (int i = 0; i < 4; i++)
     {
         delay(100);
-        leg_list[i].move_hip(65);
-        leg_list[i].move_knee(65);
+        leg_list[i].move_hip(115);
+        leg_list[i].move_knee(115);
         delay(100);
-        leg_list[i].move_hip(75);
-        leg_list[i].move_knee(50);
+        leg_list[i].move_hip(105);
+        leg_list[i].move_knee(130);
         delay(100);
-        leg_list[i].move_hip(75);
-        leg_list[i].move_knee(60);
-    }
-
-    delay(100);
-
-    // This loop will repeat the same movement for all four legs
-    for (int i = 0; i < 4; i++)
-    {
-        leg_list[i].move_hip(70);
-        leg_list[i].move_knee(70);
+        leg_list[i].move_hip(105);
+        leg_list[i].move_knee(120);
     }
 }
 
@@ -355,36 +346,60 @@ void PolyDog::control_with_potentio()
     int val_knee;
     int val_hip;
 
+    /**
+     * @brief Those values are read from two potentiometers.
+     * The values are also read by another arduino so that I can display the
+     * exact value of each potentiometer. I'm using the Arduino software for
+     * this Arduino.
+     *
+     */
     val_knee = analogRead(A0);
     val_knee = map(val_knee, 0, 1023, 0, 180);
 
     val_hip = analogRead(A2);
     val_hip = map(val_hip, 0, 1023, 0, 180);
 
-    for (int i = 0; i < 3; i++)
+    /**
+     * @brief This loop is used to test only one leg (knee and hip) at a time
+     * while the other are set on the basic position (90 degrees).
+     *
+     */
+    for (int i = 0; i < 4; i++)
     {
-        leg_list[i].move_hip(90);
-        leg_list[i].move_knee(90);
-        delay(10);
-    }
+        leg_list[i].move_shoulder(90); // Removed when fixing the shoulders
 
-    for (int j = 0; j < 20; j++)
-    {
-        for (int leg_number = 0; leg_number < 4; leg_number++)
+        if (i == 4)
         {
-            leg_list[leg_number].move_hip(80 + j);
-            leg_list[leg_number].move_knee(80 + j);
+            leg_list[i].move_knee(90);
+            leg_list[i].move_hip(90);
         }
-        delay(15);
-    }
-    for (int j = 0; j < 20; j++)
-    {
-        for (int leg_number = 0; leg_number < 4; leg_number++)
+        else
         {
-            leg_list[leg_number].move_hip(90 - j);
-            leg_list[leg_number].move_knee(90 - j);
+            // leg_list[i].move_knee(90, -val_knee);
+            // leg_list[i].move_hip(90, -val_hip);
+
+            leg_list[i].move_knee(val_knee);
+            leg_list[i].move_hip(val_hip);
         }
-        delay(15);
     }
-    delay(1000);
+    delay(20);
+
+    /**
+     * @brief This loop is used to test the shoulder of each leg while the other
+     * are still held at the basic position (180 degrees).
+     *
+     */
+
+    /**
+    for (int i = 0; i < 4; i++)
+    {
+        if (i == 4)
+        {
+            leg_list[i].move_shoulder(180);
+        }
+        else
+        {
+            leg_list[i].move_shoulder(val_hip);
+        }
+    }**/
 }

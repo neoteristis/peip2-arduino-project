@@ -124,13 +124,12 @@ void setup()
  */
 void loop()
 {
+    // dog.start();
+    // dog.move_forward();
     dog.control_with_potentio();
     // dog.sweep_every_servo();
-}
 
-/**
-{
-
+    /**
     if (IRreceiver.decode())
     {
         IRreceiver.resume();
@@ -213,6 +212,5 @@ void loop()
         break;
     default:
         break;
-    }
+    }**/
 }
-**/

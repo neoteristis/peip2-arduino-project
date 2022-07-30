@@ -84,10 +84,17 @@ Leg::Leg(int leg_number)
  * @param angle the angle wanted for the servo
  * @author ANJOU Raphael
  */
+void Leg::move_knee(int angle, int offset)
+{
+    // _knee_servo.write(abs(_knee_offset - angle));
+    _knee_servo.write(abs(offset - angle));
+}
+
 void Leg::move_knee(int angle)
 {
     _knee_servo.write(abs(_knee_offset - angle));
 }
+
 /**
  * This method will move the hip to the desired angle.
  *
@@ -97,10 +104,17 @@ void Leg::move_knee(int angle)
  * @param angle the angle wanted for the servo
  * @author ANJOU Raphael
  */
+void Leg::move_hip(int angle, int offset)
+{
+    // _hip_servo.write(abs(_hip_offset - angle));
+    _hip_servo.write(abs(offset - angle));
+}
+
 void Leg::move_hip(int angle)
 {
     _hip_servo.write(abs(_hip_offset - angle));
 }
+
 /**
  * This method will move the shoulder to the desired angle.
  *

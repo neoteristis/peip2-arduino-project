@@ -53,12 +53,17 @@ public:
      * This method will move the knee servo to the correct angle by considering the offsets constants
      * @param angle The desired angle to move the servo to
      */
+    void move_knee(int angle, int offset);
+
     void move_knee(int angle);
 
     /**
      * This method will move the hip servo to the correct angle by considering the offsets constants
      * @param angle The desired angle to move the servo to
      */
+    void move_hip(int angle, int offset);
+
+    // TO REMOVE
     void move_hip(int angle);
 
     /**
@@ -68,37 +73,37 @@ public:
     void move_shoulder(int angle);
 
     // Constants for LEG A
-    int OFFSET_KNEE_A = 180;
-    int OFFSET_HIP_A = 180;
-    int ANGLE_MIN_SHOULDER_A = 180;
-    int ANGLE_MAX_SHOULDER_A = 0;
+    int OFFSET_KNEE_A = 0;
+    int OFFSET_HIP_A = 0;
+    int ANGLE_MIN_SHOULDER_A = 185; // 160
+    int ANGLE_MAX_SHOULDER_A = 5;   // -15
     CustomServo SERVO_SHOULDER_A = CustomServo(13);
     CustomServo SERVO_HIP_A = CustomServo(14);
     CustomServo SERVO_KNEE_A = CustomServo(15);
 
     // Constants for LEG B
-    int OFFSET_KNEE_B = 180;
-    int OFFSET_HIP_B = 180;
-    int ANGLE_MIN_SHOULDER_B = 0;
+    int OFFSET_KNEE_B = -18; // -21
+    int OFFSET_HIP_B = 60;   // -70
+    int ANGLE_MIN_SHOULDER_B = -5;
     int ANGLE_MAX_SHOULDER_B = 180;
     CustomServo SERVO_SHOULDER_B = CustomServo(2);
     CustomServo SERVO_HIP_B = CustomServo(1);
     CustomServo SERVO_KNEE_B = CustomServo(0);
 
     // Constants for LEG C
-    int OFFSET_KNEE_C = 180;
-    int OFFSET_HIP_C = 180;
-    int ANGLE_MIN_SHOULDER_C = 180;
-    int ANGLE_MAX_SHOULDER_C = 0;
+    int OFFSET_KNEE_C = 179;
+    int OFFSET_HIP_C = 240;
+    int ANGLE_MIN_SHOULDER_C = 185;
+    int ANGLE_MAX_SHOULDER_C = 5;
     CustomServo SERVO_SHOULDER_C = CustomServo(18);
     CustomServo SERVO_HIP_C = CustomServo(17);
     CustomServo SERVO_KNEE_C = CustomServo(16);
 
     // Constants for LEG D
-    int OFFSET_KNEE_D = 180;
-    int OFFSET_HIP_D = 180;
-    int ANGLE_MIN_SHOULDER_D = 0;
-    int ANGLE_MAX_SHOULDER_D = 180;
+    int OFFSET_KNEE_D = 176;
+    int OFFSET_HIP_D = 190;
+    int ANGLE_MIN_SHOULDER_D = -15;
+    int ANGLE_MAX_SHOULDER_D = 165;
     CustomServo SERVO_SHOULDER_D = CustomServo(26);
     CustomServo SERVO_HIP_D = CustomServo(27);
     CustomServo SERVO_KNEE_D = CustomServo(25);
