@@ -125,9 +125,8 @@ void setup()
 void loop()
 {
     // dog.start();
-    // dog.move_forward();
-    dog.control_with_potentio();
-    // dog.sweep_every_servo();
+    dog.move_forward();
+    // dog.control_with_potentio();
 
     /**
     if (IRreceiver.decode())

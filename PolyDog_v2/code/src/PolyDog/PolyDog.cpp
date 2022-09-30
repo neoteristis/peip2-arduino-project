@@ -124,6 +124,53 @@ void PolyDog::excitement()
     delay(150);
 }
 
+// ============== PLAYGROUND ============= //
+
+/** BACKUUUUUUUP
+     // <-- STEP TWO : LEG D STARTS ---> //
+    legD.move_knee(100);
+    delay(100);
+    legD.move_hip(100);
+    delay(200);
+    legD.move_knee(130);
+    delay(200);
+
+    // BRING LEG D BACK TO START POINT
+    // START LEG A
+    legA.move_knee(100);
+
+    legD.move_hip(50);
+    legD.move_knee(140);
+    delay(150);
+
+    // <-- STEP BLALBLAA : LEG D STARTS ---> //
+    legA.move_hip(100);
+    delay(150);
+    legA.move_knee(130);
+    delay(150);
+
+    // BRING LEG D BACK TO START POINT
+    legA.move_hip(50);
+    legA.move_knee(140);
+
+ */
+
+void PolyDog::move_leg(int i)
+{
+    leg_list[i].move_knee(100);
+    delay(100);
+    leg_list[i].move_hip(100);
+    delay(200);
+    leg_list[i].move_knee(130);
+    delay(200);
+
+    // legA.move_knee(100);
+
+    leg_list[i].move_hip(50);
+    leg_list[i].move_knee(140);
+    delay(150);
+}
+
 /**
  * This methods moves the robot one step forward.
  * If placed in a loop, the robot appears to be walking smoothly.
@@ -140,19 +187,82 @@ void PolyDog::move_forward()
     // To make sure that all legs are perpendicular to the ground
     hold_shoulders();
 
-    // This loop will repeat the same movement for all four legs
-    for (int i = 0; i < 4; i++)
-    {
-        delay(100);
-        leg_list[i].move_hip(115);
-        leg_list[i].move_knee(115);
-        delay(100);
-        leg_list[i].move_hip(105);
-        leg_list[i].move_knee(130);
-        delay(100);
-        leg_list[i].move_hip(105);
-        leg_list[i].move_knee(120);
-    }
+    // START POSITION LEG : HIP = 40 | KNEE = 140
+
+    /**
+    // <-- STEP ONE : LEG B STARTS ---> //
+    legB.move_knee(100);
+    legB.move_hip(100);
+    delay(300);
+    legB.move_knee(130);
+    delay(300);**/
+
+    // <-- STEP TWO : LEG D STARTS ---> //
+    legD.move_knee(100);
+    legB.move_knee(100);
+    delay(100);
+    legD.move_hip(100);
+    legB.move_hip(100);
+    delay(200);
+    legD.move_knee(130);
+    legB.move_knee(130);
+    delay(200);
+
+    // BRING LEG D BACK TO START POINT
+    // START LEG A
+    legA.move_knee(100);
+    legC.move_knee(100);
+
+    legD.move_hip(50);
+    legB.move_hip(50);
+    legD.move_knee(140);
+    legB.move_knee(140);
+    delay(150);
+
+    // <-- STEP BLALBLAA : LEG D STARTS ---> //
+    legA.move_hip(100);
+    legC.move_hip(100);
+    delay(150);
+    legA.move_knee(130);
+    legC.move_knee(130);
+    delay(150);
+
+    // BRING LEG D BACK TO START POINT
+    legA.move_hip(50);
+    legC.move_hip(50);
+    legA.move_knee(140);
+    legC.move_knee(140);
+
+    /**
+    // <-- STEP THREE: B&D MOVES BACKWARD while A&C MOVES FORWARD ---> //
+    // BRING LEG B BACK TO START POINT
+    legB.move_hip(50);
+    legB.move_knee(140);
+    // BRING LEG D BACK TO START POINT
+    legD.move_hip(50);
+    legD.move_knee(140);
+    // BRING LEG A TO THE BACK
+    legA.move_hip(60);
+    legA.move_knee(145);
+    // BRING LEG C TO THE BACK
+    legC.move_hip(60);
+    legC.move_knee(145);
+    delay(300);
+
+    // <-- STEP FOUR : MOVE LEG A FORWARD TO THE DEFAULT POSITION ---> //
+    legA.move_knee(100);
+    delay(300);
+    legA.move_knee(140);
+    legA.move_hip(50);
+    delay(300);
+
+    // <-- STEP FIVE : MOVE LEG C FORWARD TO THE DEFAULT POSITION ---> //
+    legC.move_knee(100);
+    delay(300);
+    legC.move_knee(140);
+    legC.move_hip(50);
+    **/
+    // delay(1000);
 }
 
 /**
@@ -368,7 +478,7 @@ void PolyDog::control_with_potentio()
     {
         leg_list[i].move_shoulder(90); // Removed when fixing the shoulders
 
-        if (i == 4)
+        if (i != 1)
         {
             leg_list[i].move_knee(90);
             leg_list[i].move_hip(90);

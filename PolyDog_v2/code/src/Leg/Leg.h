@@ -82,8 +82,8 @@ public:
     CustomServo SERVO_KNEE_A = CustomServo(15);
 
     // Constants for LEG B
-    int OFFSET_KNEE_B = -18; // -21
-    int OFFSET_HIP_B = 60;   // -70
+    int OFFSET_KNEE_B = -38; // -18 -> 100 : -28 -> 90 : -28 -> 100 : -38
+    int OFFSET_HIP_B = 40;   // 60 -> 141 : 0 -> 81 : 9 -> 90 : 9 -> 59
     int ANGLE_MIN_SHOULDER_B = -5;
     int ANGLE_MAX_SHOULDER_B = 180;
     CustomServo SERVO_SHOULDER_B = CustomServo(2);

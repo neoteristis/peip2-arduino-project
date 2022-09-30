@@ -116,6 +116,8 @@ public:
     void middle_every_servo();
     void control_with_potentio();
 
+    void move_leg(int i);
+
     Leg legA;
     Leg legB;
     Leg legC;
